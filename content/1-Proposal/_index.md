@@ -171,7 +171,7 @@ The project assume low usage for a non-production Demo and MVP environment (appr
 | 5 | **Amazon DynamoDB** | Chat History/Rate Limiting | $0.29 |
 | 6 | **Amazon S3** | RAG Knowledge Base/Assets | $0.88 |
 | **III. AI & SECURITY** | | | |
-| 7 | **Amazon Bedrock** | LLM/Content Generation | $1.05 |
+| 7 | **Amazon Bedrock** | Embedding & LLM/Content Generation | $2.45 |
 | 8 | **Amazon Cognito** | Authentication/User Roles (MAUs) | $0.00 |
 | 9 | **Secrets Manager** | Store Master Keys (Fixed Cost) | $2.15 |
 | **IV. ASYNC & MONITORING** | | | |
@@ -180,10 +180,20 @@ The project assume low usage for a non-production Demo and MVP environment (appr
 | 12 | **Amazon SES** | Email Delivery | $0.24 |
 | 13 | **Amazon CloudWatch** | Logs/Metrics/Alarms | $4.46 |
 | 14 | **Amazon SNS** | Alert Notifications | $0.00 |
+| **V. NETWORK & DELIVERY** | | | |
+| 15 | **Amazon Route 53** | DNS/Domain Management | $0.50 |
+| 16 | **Amazon CloudFront** | CDN/Content Distribution/Low Latency | $0.24 |
+| 17 | **AWS WAF** | Web Application Firewall (Layer 7 Protection) | $9.03 |
+| **VI. DEVOPS & INFRASTRUCTURE** | | | |
+| 19 | **AWS CodePipeline** | CI/CD (Automated Deployment) | $1.00 |
+| 20 | **AWS CloudFormation** | Infra-as-Code (Resource Management) | $0.00 |
 
-Link budget estimation: https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing
+Link budget estimation: 
+- [Compute + Monitor Layer + AI](https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing) 
+- [Bedrock](https://drive.google.com/file/d/1ZqoGQjxSpZVKVjAOMy3Ps37iUDCm95k7/view?usp=drive_link)
+- [Network + CICD](https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing)
  
-### Total Project Cost: $56.54/month
+### Total Project Cost: $67.73/month
 
 ## 7. Risk Assessment
 
