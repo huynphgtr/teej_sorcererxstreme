@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Đề Án on Báo cáo đề án thực tập</title>
-    <link>http://localhost:1313/repository-name/vi/1-proposal/</link>
+    <link>http://localhost:1313/repo-name/vi/1-proposal/</link>
     <description>Recent content in Đề Án on Báo cáo đề án thực tập</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:1313/repository-name/vi/1-proposal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/repo-name/vi/1-proposal/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

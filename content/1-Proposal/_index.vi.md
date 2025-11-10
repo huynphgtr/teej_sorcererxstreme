@@ -44,7 +44,7 @@ SorcererXStreme AI cung cấp một nền tảng thống nhất, trực quan và
 
 Nền tảng SorcererXStreme sử dụng kiến trúc serverless lai (hybrid serverless) trên AWS, được thiết kế tỉ mỉ để xử lý các tương tác người dùng theo thời gian thực, các tác vụ theo lịch trình và giám sát tự động. Thiết kế toàn diện này đảm bảo tính toán chuyên biệt, khả năng mở rộng cao và bảo mật nghiêm ngặt trên tất cả các luồng chức năng.
 
-![Sơ đồ kiến trúc](/images/architecture.jpg)
+![Sơ đồ kiến trúc](/images/highlevelarrchitect.png)
 
 
 ### Các dịch vụ AWS được sử dụng
@@ -163,27 +163,27 @@ Dự án được chúng tôi giả định mức sử dụng thấp cho môi tr
 | Layer | AWS Service | Purpose | Estimated Monthly Cost (USD) - Paid |
 | :---: | :---| :--- | :---: |
 | **I. COMPUTE & API** | | | |
-| 1 | **AWS Lambda** | Backend Logic (RAG, Compute) | $0.22 |
+| 1 | **AWS Lambda** | Backend Logic (RAG, Compute) | $0.02 |
 | 2 | **Amazon API Gateway** | Synchronous Request Gateway | $0.03 |
-| 3 | **AWS App Runner** | Host Frontend (Next.js) | $12.60 |
+| 3 | **AWS App Runner** | Host Frontend (Next.js) | $10.20 |
 | **II. DATA & STORAGE** | | | |
 | 4 | **RDS for PostgreSQL** | Relational Data/Profiles | $37.14 |
-| 5 | **Amazon DynamoDB** | Chat History/Rate Limiting | $0.39 |
+| 5 | **Amazon DynamoDB** | Chat History/Rate Limiting | $0.29 |
 | 6 | **Amazon S3** | RAG Knowledge Base/Assets | $0.88 |
 | **III. AI & SECURITY** | | | |
-| 7 | **Amazon Bedrock** | LLM/Content Generation | $7.87 |
+| 7 | **Amazon Bedrock** | LLM/Content Generation | $1.05 |
 | 8 | **Amazon Cognito** | Authentication/User Roles (MAUs) | $0.00 |
-| 9 | **Secrets Manager** | Store Master Keys (Fixed Cost) | $0.01 |
+| 9 | **Secrets Manager** | Store Master Keys (Fixed Cost) | $2.15 |
 | **IV. ASYNC & MONITORING** | | | |
 | 10 | **EventBridge Scheduler** | Daily Horoscope Trigger | $0.00 |
-| 11 | **Amazon SQS** | Notification Queue | $0.01 |
+| 11 | **Amazon SQS** | Notification Queue | $0.08 |
 | 12 | **Amazon SES** | Email Delivery | $0.24 |
-| 13 | **Amazon CloudWatch** | Logs/Metrics/Alarms | $6.23 |
+| 13 | **Amazon CloudWatch** | Logs/Metrics/Alarms | $4.46 |
 | 14 | **Amazon SNS** | Alert Notifications | $0.00 |
 
-Link ước tính ngân sách: https://drive.google.com/file/d/1B7qVuUHAq4rsdDJjaa-wgAi8MGUIq4Ip/view?usp=sharing
+Link ước tính ngân sách: https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing
 
-### Tổng Chi Phí Dự Án: **$85.59/month**
+### Tổng Chi Phí Dự Án: **$56.54/month**
 
 ## 7. Đánh giá rủi ro 
 
