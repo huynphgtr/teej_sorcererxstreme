@@ -15,21 +15,21 @@
     <title>Proposal :: Proposal Report</title>
 
     
-    <link href="../css/nucleus.css?1762795484" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1762795484" rel="stylesheet">
-    <link href="../css/hybrid.css?1762795484" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1762795484" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1762795484" rel="stylesheet">
-    <link href="../css/auto-complete.css?1762795484" rel="stylesheet">
-    <link href="../css/atom-one-dark-reasonable.css?1762795484" rel="stylesheet">
-    <link href="../css/theme.css?1762795484" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1762795484" rel="stylesheet">
+    <link href="../css/nucleus.css?1762847912" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1762847912" rel="stylesheet">
+    <link href="../css/hybrid.css?1762847912" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1762847912" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1762847912" rel="stylesheet">
+    <link href="../css/auto-complete.css?1762847912" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1762847912" rel="stylesheet">
+    <link href="../css/theme.css?1762847912" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1762847912" rel="stylesheet">
     
-    <link href="../css/theme-workshop.css?1762795484" rel="stylesheet">
+    <link href="../css/theme-workshop.css?1762847912" rel="stylesheet">
     
     
 
-    <script src="../js/jquery-3.3.1.min.js?1762795484"></script>
+    <script src="../js/jquery-3.3.1.min.js?1762847912"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1762795484"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1762795484"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1762847912"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1762847912"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/repo-name\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1762795484"></script>
+<script type="text/javascript" src="../js/search.js?1762847912"></script>
  
   </div>
 
@@ -286,10 +286,10 @@
         <li><a href="#benefits-and-return-on-investment">Benefits and Return on Investment</a></li>
       </ul>
     </li>
-    <li><a href="#3-solution-architecture">3. Solution Architecture</a>
+    <li><a href="#3-solution-architecture">3. Solution Architecture</a></li>
+    <li><a href="#system-architecture-sorcererxstreme">System Architecture: SorcererXStreme</a>
       <ul>
-        <li><a href="#aws-services-used">AWS Services Used</a></li>
-        <li><a href="#component-design-comprehensive-flow-description">Component Design (Comprehensive Flow Description)</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#4-technical-implementation">4. Technical Implementation</a>
@@ -398,80 +398,182 @@
 </table>
 <h2 id="3-solution-architecture">3. Solution Architecture</h2>
 <p>The SorcererXStreme AI platform utilizes a robust, hybrid serverless architecture on AWS, meticulously designed to handle real-time user interactions, scheduled tasks, and autonomous monitoring.</p>
-<p><img src="../images/highlevelarrchitect.png" alt="Architecture Diagram"></p>
-<h3 id="aws-services-used">AWS Services Used</h3>
+<p><img src="../images/High_Level_System_Architecture.drawio.png" alt="Architecture Diagram"></p>
+<h2 id="system-architecture-sorcererxstreme">System Architecture: SorcererXStreme</h2>
+<p>This architecture is built on AWS and organized into three distinct, interconnected functional flows: <strong>Real-time API Interaction</strong>, <strong>Asynchronous Notification</strong>, and <strong>DevOps (CI/CD)</strong>.</p>
+<h4 id="summary-of-aws-services">Summary of AWS Services</h4>
 <table>
   <thead>
       <tr>
           <th style="text-align: left">Layer</th>
           <th style="text-align: left">AWS Service</th>
-          <th style="text-align: left">Primary Role in SorcererXStreme</th>
+          <th style="text-align: left">Primary Role</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><strong>Network &amp; Edge</strong></td>
+          <td style="text-align: left"><strong>Networking &amp; Edge</strong></td>
           <td style="text-align: left">Route 53, CloudFront, WAF</td>
-          <td style="text-align: left">- Route 53 handles DNS routing.<br> - CloudFront (CDN) accelerates content delivery. <br> - WAF provides traffic filtering and security against web exploits.</td>
+          <td style="text-align: left">DNS Resolution, Caching/Acceleration, Security Traffic Filtering.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Security &amp; Identity</strong></td>
           <td style="text-align: left">Cognito, Secrets Manager</td>
-          <td style="text-align: left">- Cognito manages user authentication and authorization. <br> - Secrets Manager securely stores and manages sensitive credentials.</td>
+          <td style="text-align: left">User Authentication Management, Securely storing API keys/sensitive credentials.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Compute (API)</strong></td>
-          <td style="text-align: left">App Runner, API Gateway, AWS Lambda</td>
-          <td style="text-align: left">- App Runner hosts the Next.js frontend or core backend containers. <br> - API Gateway acts as the synchronous entry point, routing requests to dedicated Lambda Functions (Chatbot, Metaphysical API, History API).</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Asynchronous &amp; Events</strong></td>
-          <td style="text-align: left">EventBridge Scheduler, SQS, SES</td>
-          <td style="text-align: left">- EventBridge Scheduler triggers the daily horoscope function. <br> - SQS buffers and decouples the message processing (fan-out/fan-in) for reminders. <br> - SES sends notification emails to users.</td>
+          <td style="text-align: left"><strong>Compute &amp; API</strong></td>
+          <td style="text-align: left">API Gateway, AWS Lambda, App Runner</td>
+          <td style="text-align: left">Synchronous Entry Point, Serverless Business Logic Processing, Hosting Frontend/Containers.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>AI/ML Layer</strong></td>
           <td style="text-align: left">Amazon Bedrock</td>
-          <td style="text-align: left">Provides managed access to Foundational Models (LLMs) for the AI Prophet chatbot, handling RAG context and content generation.</td>
+          <td style="text-align: left">Provides <strong>Embedding</strong> models (RAG Retrieval) and <strong>LLMs</strong> (RAG Generation) for grounded content creation.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Data &amp; Storage</strong></td>
           <td style="text-align: left">RDS for PostgreSQL, DynamoDB, S3</td>
-          <td style="text-align: left">- RDS stores relational data (detailed user profiles, user lists for reminders).<br> - DynamoDB stores high-velocity, frequently accessed data (Chat History, Interpretation History). <br> - S3 stores static assets and the RAG knowledge base.</td>
+          <td style="text-align: left"><strong>RDS</strong> (Vector Store, User Profiles), <strong>DynamoDB</strong> (Chat History/Fast Access Data), <strong>S3</strong> (Static Assets/RAG Knowledge Base).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Async &amp; Events</strong></td>
+          <td style="text-align: left">EventBridge Scheduler, SQS, SES</td>
+          <td style="text-align: left">Schedule-based triggering, Message Buffering, Email Sending.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Monitoring &amp; DevOps</strong></td>
-          <td style="text-align: left">CloudWatch, SNS, CodePipeline</td>
-          <td style="text-align: left">- CloudWatch collects logs and metrics. <br> - SNS sends critical alerts to developers. <br> - CodePipeline/CodeBuild manages the CI/CD pipeline from GitHub to deployment.</td>
+          <td style="text-align: left">CloudWatch, SNS, CodePipeline/CodeBuild</td>
+          <td style="text-align: left">Collecting Logs/Metrics, Urgent Alerting, Managing Automated CI/CD pipeline.</td>
       </tr>
   </tbody>
 </table>
-<h3 id="component-design-comprehensive-flow-description">Component Design (Comprehensive Flow Description)</h3>
-<p>The SorcererXStreme platform&rsquo;s operation is defined by four distinct, interconnected functional flows, covering all activities shown in the High-Level System Architecture diagram:</p>
-<h4 id="1-real-time-api-interaction-synchronous-flow">1. Real-Time API Interaction (Synchronous Flow)</h4>
-<ul>
-<li><strong>Request Entry (1):</strong> User requests are received and filtered at the Edge Layer via <strong>Route 53</strong> → <strong>CloudFront</strong> (for caching) → <strong>WAF</strong> (for security).</li>
-<li><strong>Routing &amp; Logic (2, 4):</strong> Requests are forwarded to <strong>API Gateway</strong> or <strong>App Runner</strong>. API Gateway directs traffic to specific <strong>Lambda</strong> functions (e.g., <code>HistoryAPI</code>, <code>MetaphysicalAPI</code>).</li>
-<li><strong>Chatbot Operation:</strong> The Chatbot Lambda reads context from <strong>DynamoDB</strong> (Read chat), processes the request, and calls <strong>Bedrock</strong> for LLM generation.</li>
-<li><strong>Data Security (3):</strong> Any Lambda requiring database access or LLM keys must first fetch credentials securely from <strong>Secrets Manager</strong>.</li>
-<li><strong>Data Persistence (5):</strong> Final results or interpretations are saved (Save History) to <strong>DynamoDB</strong> or <strong>RDS for PostgreSQL</strong>.</li>
-</ul>
-<h4 id="2-daily-horoscope-notifications-asynchronous-flow">2. Daily Horoscope Notifications (Asynchronous Flow)</h4>
-<ul>
-<li><strong>Trigger (6):</strong> The flow starts via the <strong>EventBridge Scheduler</strong>, firing at a predetermined time to trigger the <code>TriggerReminderLambda</code>.</li>
-<li><strong>Fan-Out (7):</strong> This Lambda queries <strong>RDS</strong> to retrieve the list of users subscribed to notifications and pushes the individual user messages into the <strong>SQS Reminder Queue</strong>.</li>
-<li><strong>Delivery (8):</strong> The separate <code>SendReminderLambda</code> is triggered by SQS, generates the final email content, and sends the notification to the user via <strong>Amazon SES</strong>.</li>
-</ul>
-<h4 id="3-monitoring--alerting-flow">3. Monitoring &amp; Alerting Flow</h4>
-<ul>
-<li><strong>Logging (9):</strong> All active services (<strong>Lambda, RDS, DynamoDB, App Runner</strong>) continuously publish their logs and metrics to <strong>Amazon CloudWatch</strong>.</li>
-<li><strong>Alerts:</strong> <strong>CloudWatch Alarm</strong> actively monitors critical operational metrics (e.g., error rates, DLQ message count) and uses <strong>Amazon SNS</strong> to send urgent alerts to the Developer/Operations team.</li>
-</ul>
-<h4 id="4-devops-cicd-flow">4. DevOps (CI/CD Flow)</h4>
-<ul>
-<li><strong>Code Update (10):</strong> The Developer pushes new code to <strong>GitHub</strong>, which triggers the CI/CD pipeline managed by <strong>AWS CodePipeline/CodeBuild</strong>.</li>
-<li><strong>Deployment:</strong> The pipeline automatically packages the application and deploys the new version to the <strong>Compute Layer</strong> (Lambda functions and App Runner), ensuring consistent and automated updates.</li>
-</ul>
+<h4 id="flow-1-real-time-api-interaction-chatrag-inference">Flow 1: Real-time API Interaction (Chat/RAG Inference)</h4>
+<p>This is the synchronous processing flow where users send a question and receive a generated answer from the LLM (using Retrieval-Augmented Generation - RAG).</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">Activity</th>
+          <th style="text-align: left">AWS Services</th>
+          <th style="text-align: left">Detail &amp; Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>Ingress &amp; Edge Filtering</strong></td>
+          <td style="text-align: left"><strong>User (1)</strong> → <strong>Route 53</strong> → <strong>CloudFront</strong> → <strong>WAF</strong></td>
+          <td style="text-align: left">Request goes through <strong>DNS resolution</strong> (Route 53), is <strong>accelerated &amp; cached</strong> (CloudFront), and undergoes <strong>security checks</strong> (WAF) before entering the region.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>Gateway &amp; Authentication</strong></td>
+          <td style="text-align: left"><strong>WAF</strong> → <strong>API Gateway (4)</strong> → <strong>Cognito (3)</strong></td>
+          <td style="text-align: left">Valid requests are <strong>routed</strong>. <strong>Cognito</strong> authenticates the user token.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>Orchestration</strong></td>
+          <td style="text-align: left"><strong>API Gateway (4)</strong> → <strong>Lambda (UserAPI) (5)</strong></td>
+          <td style="text-align: left"><code>UserAPI</code> acts as the <strong>orchestrator</strong>, receiving the request, validating, and forwarding it.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>4</strong></td>
+          <td style="text-align: left"><strong>Vector Embedding (RAG S1)</strong></td>
+          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>Bedrock (Embedding Model) (5)</strong></td>
+          <td style="text-align: left">Converts the raw question into a <strong>query_vector</strong> (semantic coordinates) via Bedrock (using NAT Gateway).</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>5</strong></td>
+          <td style="text-align: left"><strong>Context Retrieval (RAG S2)</strong></td>
+          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>RDS (PostgreSQL) (5)</strong></td>
+          <td style="text-align: left">Sends the <code>query_vector</code> to RDS (using a vector extension) to perform <strong>Hybrid Search</strong> and retrieve the most relevant <strong>context chunks</strong>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>6</strong></td>
+          <td style="text-align: left"><strong>Generation (RAG S3)</strong></td>
+          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>Bedrock (LLM) (5)</strong></td>
+          <td style="text-align: left">Sends the <strong>Super Prompt</strong> (Context + Original Question) to the <strong>Bedrock LLM</strong> to generate the final answer.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>7</strong></td>
+          <td style="text-align: left"><strong>History Logging (Background)</strong></td>
+          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>DynamoDB (5)</strong></td>
+          <td style="text-align: left">Logs chat/interpretation history to DynamoDB (via Endpoint, without waiting for a response).</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>8</strong></td>
+          <td style="text-align: left"><strong>Completion</strong></td>
+          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>API Gateway (4)</strong> → <strong>User (1)</strong></td>
+          <td style="text-align: left">Returns the final answer to the user.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flow-2-daily-horoscope-notification-asynchronous">Flow 2: Daily Horoscope Notification (Asynchronous)</h4>
+<p>This flow is triggered on a schedule (Scheduler) and uses SQS for message buffering and asynchronous processing.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">Activity</th>
+          <th style="text-align: left">AWS Services</th>
+          <th style="text-align: left">Detail &amp; Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>Schedule Trigger</strong></td>
+          <td style="text-align: left"><strong>EventBridge Scheduler (6)</strong> → <strong>Lambda (TriggerReminder)</strong></td>
+          <td style="text-align: left">Initiates the flow at a pre-defined time.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>Fan-Out</strong></td>
+          <td style="text-align: left"><strong>Lambda</strong> → <strong>RDS</strong> → <strong>SQS (7)</strong></td>
+          <td style="text-align: left">Retrieves the list of subscribed users from RDS and pushes individual messages into the <strong>SQS Reminder Queue</strong> for decoupled processing.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>Process &amp; Deliver</strong></td>
+          <td style="text-align: left"><strong>SQS (8)</strong> → <strong>Lambda (SendReminder)</strong> → <strong>SES</strong></td>
+          <td style="text-align: left"><code>SendReminderLambda</code> is triggered by SQS, creates the email content, and sends <strong>notification emails</strong> to users via Amazon SES.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flow-3-devops-cicd">Flow 3: DevOps (CI/CD)</h4>
+<p>The automated process for deploying new source code from the repository to the AWS environment.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">#</th>
+          <th style="text-align: left">Activity</th>
+          <th style="text-align: left">AWS Services</th>
+          <th style="text-align: left">Detail &amp; Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>1</strong></td>
+          <td style="text-align: left"><strong>Source &amp; Activation</strong></td>
+          <td style="text-align: left"><strong>Developer (10)</strong> → <strong>GitHub (10)</strong> → <strong>CodePipeline (10)</strong></td>
+          <td style="text-align: left">A <code>git push</code> activates the CodePipeline via a webhook.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>2</strong></td>
+          <td style="text-align: left"><strong>Build &amp; Test</strong></td>
+          <td style="text-align: left"><strong>CodePipeline (10)</strong> → <strong>CodeBuild (10)</strong></td>
+          <td style="text-align: left">Downloads code, installs dependencies, runs unit tests, and <strong>packages (Builds)</strong> the artifacts.</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>3</strong></td>
+          <td style="text-align: left"><strong>Deployment</strong></td>
+          <td style="text-align: left"><strong>CodeBuild</strong> → <strong>CloudFormation</strong></td>
+          <td style="text-align: left">Deploys the new version of Lambda functions and updates API Gateway and App Runner configuration.</td>
+      </tr>
+  </tbody>
+</table>
 <h2 id="4-technical-implementation">4. Technical Implementation</h2>
 <p>The SorcererXStreme project will follow an <strong>Agile-Iterative Development</strong> methodology, structured into a <strong>9-week roadmap</strong> comprising three main iterations (Iter 3, 4, and 5) after the initial planning phase.</p>
 <h3 id="implementation-phases">Implementation Phases</h3>
@@ -940,19 +1042,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1762795484"></script>
-    <script src="../js/perfect-scrollbar.min.js?1762795484"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1762795484"></script>
-    <script src="../js/jquery.sticky.js?1762795484"></script>
-    <script src="../js/featherlight.min.js?1762795484"></script>
-    <script src="../js/highlight.pack.js?1762795484"></script>
+    <script src="../js/clipboard.min.js?1762847912"></script>
+    <script src="../js/perfect-scrollbar.min.js?1762847912"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1762847912"></script>
+    <script src="../js/jquery.sticky.js?1762847912"></script>
+    <script src="../js/featherlight.min.js?1762847912"></script>
+    <script src="../js/highlight.pack.js?1762847912"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1762795484"></script>
-    <script src="../js/learn.js?1762795484"></script>
-    <script src="../js/hugo-learn.js?1762795484"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1762847912"></script>
+    <script src="../js/learn.js?1762847912"></script>
+    <script src="../js/hugo-learn.js?1762847912"></script>
 
-    <link href="../mermaid/mermaid.css?1762795484" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1762795484"></script>
+    <link href="../mermaid/mermaid.css?1762847912" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1762847912"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
