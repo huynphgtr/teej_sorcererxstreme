@@ -34,7 +34,7 @@ SorcererXStreme AI cung cấp một nền tảng thống nhất, trực quan và
 ### Lợi ích và Lợi tức Đầu tư 
 
 | Lợi ích              | Tác động                                                             | Giá trị                                        |
-| :--------------------: | :------------------------------------------------------------------: | :--------------------------------------------: |
+| :-------------------- | :------------------------------------------------------------------| :--------------------------------------------|
 | **Độ tin cậy dữ liệu** | RAG làm giảm "ảo giác" của mô hình AI và cung cấp các luận giải có thể xác minh nguồn. | Độ tin cậy cao & giữ chân người dùng tốt hơn.  |
 | **Tính trung tâm**     | Hợp nhất dữ liệu huyền học Đông và Tây trong một nền tảng.           | Cơ sở tri thức thống nhất cho người dùng.      |
 | **Khả năng thu lại lợi nhuận** | Mô hình đăng ký VIP mở khóa các tính năng nâng cao. | Dòng doanh thu ổn định và khả năng kinh doanh. |
@@ -42,54 +42,68 @@ SorcererXStreme AI cung cấp một nền tảng thống nhất, trực quan và
 
 ## 3. Kiến trúc giải pháp 
 
-Nền tảng SorcererXStreme sử dụng kiến trúc serverless lai (hybrid serverless) trên AWS, được thiết kế tỉ mỉ để xử lý các tương tác người dùng theo thời gian thực, các tác vụ theo lịch trình và giám sát tự động. Thiết kế toàn diện này đảm bảo tính toán chuyên biệt, khả năng mở rộng cao và bảo mật nghiêm ngặt trên tất cả các luồng chức năng.
+Nền tảng SorcererXStreme sử dụng kiến trúc hybrid serverless trên AWS, được thiết kế tỉ mỉ để xử lý các tương tác người dùng theo thời gian thực, các tác vụ theo lịch trình và giám sát tự động. Thiết kế toàn diện này đảm bảo tính toán chuyên biệt, khả năng mở rộng cao và bảo mật nghiêm ngặt trên tất cả các luồng chức năng.
 
-![Sơ đồ kiến trúc](/images/highlevelarrchitect.png)
+![Sơ đồ kiến trúc](/images/High_Level_System_Architecture.drawio.png)
 
 
 ### Các dịch vụ AWS được sử dụng
 
-| Lớp                       | Dịch vụ AWS                         | Vai trò chính trong SorcererXStreme AI                                                                                                                                                                                              |
-| :----------------------- | :---------------------------------| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Mạng & Biên**           | Route 53, CloudFront, WAF           | - Route 53 xử lý định tuyến DNS.<br> - CloudFront (CDN) tăng tốc phân phối nội dung. <br> - WAF cung cấp tính năng lọc lưu lượng và bảo mật chống lại các khai thác web.                                                                           |
-| **Bảo mật & Danh tính**   | Cognito, Secrets Manager | - Cognito quản lý xác thực và ủy quyền người dùng.<br> - Secrets Manager lưu trữ và quản lý an toàn các thông tin xác thực nhạy cảm.                                                                                                        |
-| **Tính toán (API)**       | App Runner, API Gateway, AWS Lambda | - App Runner host frontend Next.js hoặc các containers backend cốt lõi. <br> - API Gateway hoạt động như điểm vào đồng bộ, định tuyến các yêu cầu đến các Lambda Functions chuyên dụng (Chatbot, Metaphysical API, History API).             |
-| **Bất đồng bộ & Sự kiện** | EventBridge Scheduler, SQS, SES | - EventBridge Scheduler kích hoạt chức năng tử vi hàng ngày. <br> - SQS đệm và tách rời việc xử lý tin nhắn (fan-out/fan-in) cho các lời nhắc. <br> - SES gửi email thông báo cho người dùng. |
-| **Tầng AI/ML** | Amazon Bedrock | Cung cấp quyền truy cập được quản lý vào các Mô hình Nền tảng (LLMs) cho AI Chatbot, xử lý ngữ cảnh RAG và tạo nội dung.                                                                                                    |
-| **Dữ liệu & Lưu trữ**     | RDS for PostgreSQL, DynamoDB, S3    | - RDS lưu trữ dữ liệu quan hệ (hồ sơ người dùng chi tiết, danh sách người dùng cho lời nhắc).<br> - DynamoDB lưu trữ dữ liệu truy cập nhanh, tần suất cao (Lịch sử Chat, Lịch sử Luận giải). <br> - S3 lưu trữ tài sản tĩnh và cơ sở tri thức RAG. |
-| **Giám sát & DevOps**     | CloudWatch, SNS, CodePipeline | - CloudWatch thu thập nhật ký (logs) và số liệu (metrics). <br> - SNS gửi cảnh báo quan trọng đến các nhà phát triển. <br> - CodePipeline/CodeBuild quản lý quy trình CI/CD từ GitHub đến triển khai.                                               |
+| Lớp | Dịch vụ AWS | Vai trò Chính |
+| :--- | :--- | :--- |
+| **Mạng & Biên** | Route 53, CloudFront, WAF | Định tuyến DNS, Tăng tốc Caching, Lọc lưu lượng bảo mật. |
+| **Bảo mật & Danh tính** | Cognito, Secrets Manager | Quản lý Xác thực người dùng, Lưu trữ an toàn các khóa API/Thông tin nhạy cảm. |
+| **Tính toán & API** | API Gateway, AWS Lambda, App Runner | Cổng vào đồng bộ, Xử lý Logic Nghiệp vụ (Serverless), Hosting Frontend/Container. |
+| **Tầng AI/ML** | Amazon Bedrock | Cung cấp mô hình **Embedding** (RAG Retrieval) và **LLM** (RAG Generation) để tạo nội dung có căn cứ. |
+| **Dữ liệu & Lưu trữ** | RDS for PostgreSQL, DynamoDB, S3 | **RDS** (Vector Store, Hồ sơ người dùng), **DynamoDB** (Lịch sử chat/Truy cập nhanh), **S3** (Tài sản tĩnh/Cơ sở tri thức RAG). |
+| **Bất đồng bộ & Sự kiện** | EventBridge Scheduler, SQS, SES | Kích hoạt theo lịch trình, Đệm tin nhắn, Gửi Email. |
+| **Giám sát & DevOps** | CloudWatch, SNS, CodePipeline/CodeBuild | Thu thập Logs/Metrics, Cảnh báo khẩn cấp, Quản lý quy trình CI/CD tự động. |
 
 ### Thiết kế thành phần 
 
-Hoạt động của nền tảng SorcererXStreme được xác định bởi bốn luồng chức năng riêng biệt, liên kết với nhau, bao quát tất cả các hoạt động được thể hiện trong sơ đồ Kiến trúc Hệ thống cấp cao:
+Hoạt động của nền tảng SorcererXStreme được xác định bởi ba luồng chức năng riêng biệt, liên kết với nhau, bao quát tất cả các hoạt động được thể hiện trong sơ đồ kiến trúc hệ thống cấp cao:
 
-#### 1. Tương tác API thời gian thực (Luồng đồng bộ)
+#### Luồng 1: Tương tác API Thời gian thực 
 
-* **Tiếp nhận yêu cầu (1):** Yêu cầu của người dùng được nhận và lọc tại tầng biên (Edge Layer) thông qua **Route 53** → **CloudFront** (để caching) → **WAF** (để bảo mật).
-* **Định tuyến & Logic (2, 4):** Yêu cầu được chuyển tiếp đến **API Gateway** hoặc **App Runner**. API Gateway định tuyến lưu lượng đến các hàm **Lambda** cụ thể. 
-* **Hoạt động Chatbot:** Lambda Chatbot đọc ngữ cảnh từ **DynamoDB** (Đọc chat), xử lý yêu cầu, và gọi **Bedrock** để tạo sinh nội dung LLM.
-* **Bảo mật dữ liệu (3):** Bất kỳ Lambda nào yêu cầu truy cập database hoặc khóa LLM đều phải lấy thông tin xác thực một cách an toàn từ **Secrets Manager**.
-* **Lưu trữ dữ liệu (5):** Kết quả cuối cùng hoặc các luận giải được lưu (Save History) vào **DynamoDB** hoặc **RDS for PostgreSQL**.
+Đây là luồng xử lý đồng bộ, nơi người dùng gửi câu hỏi và nhận câu trả lời được tạo sinh từ LLM (sử dụng RAG - Retrieval-Augmented Generation).
 
-#### 2. Thông báo Tử vi Hàng ngày (Luồng Bất đồng bộ)
+| # | Hoạt động | Dịch vụ AWS | Chi tiết & Vai trò |
+| :---: | :--- | :--- | :--- |
+| **1** | **Tiếp nhận & Lọc ở Tầng Biên** | **User (1)** → **Route 53** → **CloudFront** → **WAF** | Yêu cầu đi qua **DNS** (Route 53), được **tăng tốc & cache** (CloudFront), và được **kiểm tra bảo mật** (WAF) trước khi vào hệ thống. |
+| **2** | **Cổng vào & Xác thực** | **WAF** → **API Gateway (4)** → **Cognito (3)** | Yêu cầu hợp lệ được **định tuyến**. **Cognito** xác thực token người dùng. |
+| **3** | **Điều phối (Orchestration)** | **API Gateway (4)** → **Lambda (UserAPI) (5)** | `UserAPI`, nhận yêu cầu, xác thực và chuyển tiếp. |
+| **4** | **Lấy Vector (RAG B1)** | **Lambda (Chatbot) (5)** → **Bedrock (Embedding Model) (5)** | Chuyển câu hỏi thô thành **query\_vector** (tọa độ ý nghĩa) qua Bedrock (qua NAT Gateway). |
+| **5** | **Truy xuất Ngữ cảnh (RAG B2)** | **Lambda (Chatbot) (5)** → **RDS (PostgreSQL) (5)** | Gửi `query_vector` đến RDS (sử dụng tiện ích mở rộng vector) để thực hiện **Hybrid Search** và truy xuất các **chunk ngữ cảnh** liên quan. |
+| **6** | **Tạo sinh (RAG B3)** | **Lambda (Chatbot) (5)** → **Bedrock (LLM) (5)** | Gửi **Siêu Prompt** (Context + Câu hỏi) đến **Bedrock LLM** để tạo ra câu trả lời cuối cùng. |
+| **7** | **Lưu Lịch sử (Background)** | **Lambda (Chatbot) (5)** → **DynamoDB (5)** | Ghi log lịch sử chat/luận giải vào DynamoDB (qua Endpoint, không chờ phản hồi). |
+| **8** | **Hoàn tất** | **Lambda (Chatbot) (5)** → **API Gateway (4)** → **User (1)** | Trả câu trả lời cuối cùng về cho người dùng. |
 
-* **Kích hoạt (6):** Luồng bắt đầu thông qua **EventBridge Scheduler**, được kích hoạt vào một thời điểm đã định trước để gọi hàm `TriggerReminderLambda`.
-* **Phân tán (Fan-Out) (7):** Hàm Lambda này truy vấn **RDS** để lấy danh sách người dùng đã đăng ký nhận thông báo và đẩy các tin nhắn riêng lẻ vào **Hàng đợi SQS (Reminder Queue)**.
-* **Phân phối (8):** Hàm `SendReminderLambda` riêng biệt được kích hoạt bởi SQS, tạo nội dung email cuối cùng và gửi thông báo đến người dùng thông qua **Amazon SES**.
 
-#### 3. Luồng Giám sát & Cảnh báo
+#### Luồng 2: Thông báo Tử vi Hàng ngày (Bất đồng bộ)
 
-* **Ghi nhật ký (9):** Tất cả các dịch vụ đang hoạt động (**Lambda, RDS, DynamoDB, App Runner**) liên tục công bố logs và metrics của chúng lên **Amazon CloudWatch**.
-* **Cảnh báo:** **CloudWatch Alarm** chủ động giám sát các chỉ số hoạt động quan trọng và sử dụng **Amazon SNS** để gửi cảnh báo khẩn cấp đến đội ngũ phát triển và vận hành.
+Luồng xử lý theo lịch trình (Scheduler), sử dụng SQS để đệm và xử lý bất đồng bộ.
 
-#### 4. DevOps (Luồng CI/CD)
+| # | Hoạt động | Dịch vụ AWS | Chi tiết & Vai trò |
+| :---: | :--- | :--- | :--- |
+| **1** | **Kích hoạt Lịch trình** | **EventBridge Scheduler (6)** → **Lambda (TriggerReminder)** | Khởi tạo luồng tại thời điểm đã định. |
+| **2** | **Phân tán (Fan-Out)** | **Lambda** → **RDS** → **SQS (7)** | Lấy danh sách người dùng đăng ký từ RDS và đẩy các tin nhắn cá nhân vào **hàng đợi SQS** để xử lý tách biệt. |
+| **3** | **Xử lý & Phân phối** | **SQS (8)** → **Lambda (SendReminder)** → **SES** | `SendReminderLambda` được kích hoạt bởi SQS, tạo nội dung và gửi **email thông báo** đến người dùng thông qua Amazon SES. |
 
-* **Cập nhật Mã (10):** Nhà phát triển đẩy mã mới lên **GitHub**, điều này kích hoạt quy trình CI/CD được quản lý bởi **AWS CodePipeline/CodeBuild**.
-* **Triển khai:** Pipeline tự động đóng gói ứng dụng và triển khai phiên bản mới đến Tầng Tính toán (**Compute Layer**), đảm bảo cập nhật nhất quán và tự động.
+
+#### Luồng 3: DevOps (CI/CD)
+
+Quy trình tự động hóa việc triển khai mã nguồn mới từ kho chứa code đến môi trường AWS.
+
+| # | Hoạt động | Dịch vụ AWS | Chi tiết & Vai trò |
+| :---: | :--- | :--- | :--- |
+| **1** | **Nguồn Code & Kích hoạt** | **Developer (10)** → **GitHub (10)** → **CodePipeline (10)** | `git push` kích hoạt CodePipeline qua webhook. |
+| **2** | **Build & Kiểm thử** | **CodePipeline (10)** → **CodeBuild (10)** | Tải code, cài đặt dependency, chạy unit test và **đóng gói (Build)** artifacts. |
+| **3** | **Triển khai** | **CodeBuild** → **CloudFormation** | Triển khai phiên bản mới của các hàm Lambda, cập nhật cấu hình API Gateway và App Runner. |
+
 
 ## 4. Triển khai kỹ thuật 
 
-Dự án SorcererXStreme xây dựng dựa trên phương pháp **Phát triển Agile-Iterative**, tập trung vào việc cung cấp một phần gia tăng hoạt động với vai trò người dùng mở rộng và tích hợp RAG trong mỗi chu kỳ. Việc phát triển được cơ cấu thành một **lộ trình 9 tuần** bao gồm ba giai đoạn chính (Iter 3, 4 và 5) sau giai đoạn lập kế hoạch ban đầu.
+Dự án SorcererXStreme xây dựng dựa trên phương pháp Phát triển Agile-Iterative, tập trung vào việc cung cấp một phần gia tăng hoạt động với vai trò người dùng mở rộng và tích hợp RAG trong mỗi chu kỳ. Việc phát triển được cơ cấu thành một lộ trình 9 tuần bao gồm ba giai đoạn chính (Iter 3, 4 và 5) sau giai đoạn lập kế hoạch ban đầu.
 
 ### Các giai đoạn triển khai
 
@@ -197,8 +211,7 @@ Link ước tính ngân sách:
 
 ## 7. Đánh giá rủi ro 
 
-
-| Rủi ro | Tác động   | Xác suất   | Chiến lược giảm thiểu |
+| Rủi ro | Tác động   | Xác suất | Chiến lược giảm thiểu |
 | :---------------------------------| :-------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------|
 | **Ảo giác LLM** | Cao | Trung bình | Triển khai **Bộ kiểm tra Thực tế RAG (RAG Fact Checker)**; sử dụng LLM chất lượng cao; căn cứ câu trả lời vào các nguồn đã được xác minh.      |
 | **Vượt chi phí LLM** | Cao | Trung bình | Thiết lập **Cảnh báo Ngân sách AWS (AWS Budget Alerts)**; triển khai **kiểm soát token**; sử dụng mô hình LLM phân tầng (Miễn phí so với VIP). |
@@ -212,7 +225,7 @@ Link ước tính ngân sách:
 *   **Độ chính xác theo thời gian thực:** Tích hợp RAG giảm đáng kể "ảo giác" của AI, nâng cao độ tin cậy của các luận giải.
 *   **Khả năng mở rộng:** Kiến trúc serverless AWS đảm bảo khả năng mở rộng tự động để xử lý lưu lượng truy cập đáng kể của người dùng.
 
-### Giá trị Dài hạn
+### Giá trị dài hạn
 
 *   **Khả năng lợi nhuận:** Mô hình đăng ký VIP tạo ra một con đường rõ ràng, ổn định để tạo doanh thu.
 *   **Nền tảng dữ liệu:** Một cơ sở tri thức huyền học độc quyền, đã được xác minh (corpus RAG) được thiết lập như một tài sản có giá trị, có thể tái sử dụng.

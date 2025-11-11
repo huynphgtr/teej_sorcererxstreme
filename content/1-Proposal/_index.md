@@ -45,47 +45,60 @@ SorcererXStreme AI offers a unified, intuitive, and intelligent platform:
 
 The SorcererXStreme AI platform utilizes a robust, hybrid serverless architecture on AWS, meticulously designed to handle real-time user interactions, scheduled tasks, and autonomous monitoring.
 
-![Architecture Diagram](/images/highlevelarrchitect.png)
+![Architecture Diagram](/images/High_Level_System_Architecture.drawio.png)
 
-### AWS Services Used
+## System Architecture: SorcererXStreme
 
-| Layer                   | AWS Service                       | Primary Role in SorcererXStreme |
-| :---------------------------| :------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Network & Edge**          | Route 53, CloudFront, WAF  | - Route 53 handles DNS routing.<br> - CloudFront (CDN) accelerates content delivery. <br> - WAF provides traffic filtering and security against web exploits.                                                                                       |
-| **Security & Identity**     | Cognito, Secrets Manager | - Cognito manages user authentication and authorization. <br> - Secrets Manager securely stores and manages sensitive credentials.                                                                                                            |
-| **Compute (API)** | App Runner, API Gateway, AWS Lambda   | - App Runner hosts the Next.js frontend or core backend containers. <br> - API Gateway acts as the synchronous entry point, routing requests to dedicated Lambda Functions (Chatbot, Metaphysical API, History API).                          |
-| **Asynchronous & Events**   | EventBridge Scheduler, SQS, SES       | - EventBridge Scheduler triggers the daily horoscope function. <br> - SQS buffers and decouples the message processing (fan-out/fan-in) for reminders. <br> - SES sends notification emails to users.                                                |
-| **AI/ML Layer**             | Amazon Bedrock                        | Provides managed access to Foundational Models (LLMs) for the AI Prophet chatbot, handling RAG context and content generation.                                                                                                       |
-| **Data & Storage**          | RDS for PostgreSQL, DynamoDB, S3      | - RDS stores relational data (detailed user profiles, user lists for reminders).<br> - DynamoDB stores high-velocity, frequently accessed data (Chat History, Interpretation History). <br> - S3 stores static assets and the RAG knowledge base.   |
-| **Monitoring & DevOps**     | CloudWatch, SNS, CodePipeline | - CloudWatch collects logs and metrics. <br> - SNS sends critical alerts to developers. <br> - CodePipeline/CodeBuild manages the CI/CD pipeline from GitHub to deployment.  |
+This architecture is built on AWS and organized into three distinct, interconnected functional flows: **Real-time API Interaction**, **Asynchronous Notification**, and **DevOps (CI/CD)**.
 
-### Component Design (Comprehensive Flow Description)
+#### Summary of AWS Services
 
-The SorcererXStreme platform's operation is defined by four distinct, interconnected functional flows, covering all activities shown in the High-Level System Architecture diagram:
+| Layer | AWS Service | Primary Role |
+| :--- | :--- | :--- |
+| **Networking & Edge** | Route 53, CloudFront, WAF | DNS Resolution, Caching/Acceleration, Security Traffic Filtering. |
+| **Security & Identity** | Cognito, Secrets Manager | User Authentication Management, Securely storing API keys/sensitive credentials. |
+| **Compute & API** | API Gateway, AWS Lambda, App Runner | Synchronous Entry Point, Serverless Business Logic Processing, Hosting Frontend/Containers. |
+| **AI/ML Layer** | Amazon Bedrock | Provides **Embedding** models (RAG Retrieval) and **LLMs** (RAG Generation) for grounded content creation. |
+| **Data & Storage** | RDS for PostgreSQL, DynamoDB, S3 | **RDS** (Vector Store, User Profiles), **DynamoDB** (Chat History/Fast Access Data), **S3** (Static Assets/RAG Knowledge Base). |
+| **Async & Events** | EventBridge Scheduler, SQS, SES | Schedule-based triggering, Message Buffering, Email Sending. |
+| **Monitoring & DevOps** | CloudWatch, SNS, CodePipeline/CodeBuild | Collecting Logs/Metrics, Urgent Alerting, Managing Automated CI/CD pipeline. |
 
-#### 1. Real-Time API Interaction (Synchronous Flow)
 
-* **Request Entry (1):** User requests are received and filtered at the Edge Layer via **Route 53** → **CloudFront** (for caching) → **WAF** (for security).
-* **Routing & Logic (2, 4):** Requests are forwarded to **API Gateway** or **App Runner**. API Gateway directs traffic to specific **Lambda** functions (e.g., `HistoryAPI`, `MetaphysicalAPI`).
-* **Chatbot Operation:** The Chatbot Lambda reads context from **DynamoDB** (Read chat), processes the request, and calls **Bedrock** for LLM generation.
-* **Data Security (3):** Any Lambda requiring database access or LLM keys must first fetch credentials securely from **Secrets Manager**.
-* **Data Persistence (5):** Final results or interpretations are saved (Save History) to **DynamoDB** or **RDS for PostgreSQL**.
+#### Flow 1: Real-time API Interaction (Chat/RAG Inference)
 
-#### 2. Daily Horoscope Notifications (Asynchronous Flow)
+This is the synchronous processing flow where users send a question and receive a generated answer from the LLM (using Retrieval-Augmented Generation - RAG).
 
-* **Trigger (6):** The flow starts via the **EventBridge Scheduler**, firing at a predetermined time to trigger the `TriggerReminderLambda`.
-* **Fan-Out (7):** This Lambda queries **RDS** to retrieve the list of users subscribed to notifications and pushes the individual user messages into the **SQS Reminder Queue**.
-* **Delivery (8):** The separate `SendReminderLambda` is triggered by SQS, generates the final email content, and sends the notification to the user via **Amazon SES**.
+| # | Activity | AWS Services | Detail & Role |
+| :---: | :--- | :--- | :--- |
+| **1** | **Ingress & Edge Filtering** | **User (1)** → **Route 53** → **CloudFront** → **WAF** | Request goes through **DNS resolution** (Route 53), is **accelerated & cached** (CloudFront), and undergoes **security checks** (WAF) before entering the region. |
+| **2** | **Gateway & Authentication** | **WAF** → **API Gateway (4)** → **Cognito (3)** | Valid requests are **routed**. **Cognito** authenticates the user token. |
+| **3** | **Orchestration** | **API Gateway (4)** → **Lambda (UserAPI) (5)** | `UserAPI` acts as the **orchestrator**, receiving the request, validating, and forwarding it. |
+| **4** | **Vector Embedding (RAG S1)** | **Lambda (Chatbot) (5)** → **Bedrock (Embedding Model) (5)** | Converts the raw question into a **query\_vector** (semantic coordinates) via Bedrock (using NAT Gateway). |
+| **5** | **Context Retrieval (RAG S2)** | **Lambda (Chatbot) (5)** → **RDS (PostgreSQL) (5)** | Sends the `query_vector` to RDS (using a vector extension) to perform **Hybrid Search** and retrieve the most relevant **context chunks**. |
+| **6** | **Generation (RAG S3)** | **Lambda (Chatbot) (5)** → **Bedrock (LLM) (5)** | Sends the **Super Prompt** (Context + Original Question) to the **Bedrock LLM** to generate the final answer. |
+| **7** | **History Logging (Background)** | **Lambda (Chatbot) (5)** → **DynamoDB (5)** | Logs chat/interpretation history to DynamoDB (via Endpoint, without waiting for a response). |
+| **8** | **Completion** | **Lambda (Chatbot) (5)** → **API Gateway (4)** → **User (1)** | Returns the final answer to the user. |
 
-#### 3. Monitoring & Alerting Flow
+#### Flow 2: Daily Horoscope Notification (Asynchronous)
 
-* **Logging (9):** All active services (**Lambda, RDS, DynamoDB, App Runner**) continuously publish their logs and metrics to **Amazon CloudWatch**.
-* **Alerts:** **CloudWatch Alarm** actively monitors critical operational metrics (e.g., error rates, DLQ message count) and uses **Amazon SNS** to send urgent alerts to the Developer/Operations team.
+This flow is triggered on a schedule (Scheduler) and uses SQS for message buffering and asynchronous processing.
 
-#### 4. DevOps (CI/CD Flow)
+| # | Activity | AWS Services | Detail & Role |
+| :---: | :--- | :--- | :--- |
+| **1** | **Schedule Trigger** | **EventBridge Scheduler (6)** → **Lambda (TriggerReminder)** | Initiates the flow at a pre-defined time. |
+| **2** | **Fan-Out** | **Lambda** → **RDS** → **SQS (7)** | Retrieves the list of subscribed users from RDS and pushes individual messages into the **SQS Reminder Queue** for decoupled processing. |
+| **3** | **Process & Deliver** | **SQS (8)** → **Lambda (SendReminder)** → **SES** | `SendReminderLambda` is triggered by SQS, creates the email content, and sends **notification emails** to users via Amazon SES. |
 
-* **Code Update (10):** The Developer pushes new code to **GitHub**, which triggers the CI/CD pipeline managed by **AWS CodePipeline/CodeBuild**.
-* **Deployment:** The pipeline automatically packages the application and deploys the new version to the **Compute Layer** (Lambda functions and App Runner), ensuring consistent and automated updates.
+
+#### Flow 3: DevOps (CI/CD)
+
+The automated process for deploying new source code from the repository to the AWS environment.
+
+| # | Activity | AWS Services | Detail & Role |
+| :---: | :--- | :--- | :--- |
+| **1** | **Source & Activation** | **Developer (10)** → **GitHub (10)** → **CodePipeline (10)** | A `git push` activates the CodePipeline via a webhook. |
+| **2** | **Build & Test** | **CodePipeline (10)** → **CodeBuild (10)** | Downloads code, installs dependencies, runs unit tests, and **packages (Builds)** the artifacts. |
+| **3** | **Deployment** | **CodeBuild** → **CloudFormation** | Deploys the new version of Lambda functions and updates API Gateway and App Runner configuration. |
 
 ## 4. Technical Implementation
 
