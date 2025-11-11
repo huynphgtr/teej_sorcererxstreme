@@ -204,7 +204,7 @@ The project assume low usage for a non-production Demo and MVP environment (appr
 Link budget estimation: 
 - [Compute + Monitor Layer + AI](https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing) 
 - [Bedrock](https://drive.google.com/file/d/1ZqoGQjxSpZVKVjAOMy3Ps37iUDCm95k7/view?usp=drive_link)
-- [Network + CICD](https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing)
+- [Network + CICD](https://drive.google.com/file/d/1xseIv9D2yimf75tc3UdlheUD36VIQHVa/view?usp=drive_link)
  
 ### Total Project Cost: $67.73/month
 

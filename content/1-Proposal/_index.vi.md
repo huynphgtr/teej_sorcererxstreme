@@ -205,7 +205,7 @@ Dự án được chúng tôi giả định mức sử dụng thấp cho môi tr
 Link ước tính ngân sách: 
 - [Compute + Monitor Layer + AI](https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing) 
 - [Bedrock](https://drive.google.com/file/d/1ZqoGQjxSpZVKVjAOMy3Ps37iUDCm95k7/view?usp=drive_link)
-- [Network + CICD](https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing)
+- [Network + CICD](https://drive.google.com/file/d/1xseIv9D2yimf75tc3UdlheUD36VIQHVa/view?usp=drive_link)
 
 ### Tổng Chi Phí Dự Án: $67.73/month
 
