@@ -9,11 +9,11 @@ chapter: false
 
 | Field | Detail |
 | :--- | :--- |
-| **Group Name** | **TEEJ_SorcererXStreme** |
+| **Group name** | TEEJ_SorcererXStreme |
 | **University** | FPT University - Ho Chi Minh Campus |
-| **Internship Company** | Amazon Web Services Vietnam Co., Ltd. |
-| **Internship Position** | FCJ Workforce Program Intern |
-| **Internship Duration** | From 08/09/2025 to 24/12/2025 |
+| **Internship company** | Amazon Web Services Vietnam Co., Ltd. |
+| **Internship position** | FCJ Workforce Program Intern |
+| **Internship duration** | From 08/09/2025 to 24/12/2025 |
 
 
 ### Team Member 

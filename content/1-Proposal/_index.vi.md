@@ -44,179 +44,101 @@ SorcererXStreme AI cung cấp một nền tảng thống nhất, trực quan và
 
 Nền tảng SorcererXStreme sử dụng kiến trúc hybrid serverless trên AWS, được thiết kế tỉ mỉ để xử lý các tương tác người dùng theo thời gian thực, các tác vụ theo lịch trình và giám sát tự động. Thiết kế toàn diện này đảm bảo tính toán chuyên biệt, khả năng mở rộng cao và bảo mật nghiêm ngặt trên tất cả các luồng chức năng.
 
-![Sơ đồ kiến trúc](/images/High_Level_System_Architecture.drawio.png)
+![Sơ đồ kiến trúc](/images/High_Level_System_Architecture.drawio(2).png)
 
 
-### Các dịch vụ AWS được sử dụng
+### Dịch vụ sử dụng
 
-| Lớp | Dịch vụ AWS | Vai trò Chính |
+| Lớp | Dịch vụ | Vai trò và Mối quan hệ |
 | :--- | :--- | :--- |
-| **Mạng & Biên** | Route 53, CloudFront, WAF | Định tuyến DNS, Tăng tốc Caching, Lọc lưu lượng bảo mật. |
-| **Bảo mật & Danh tính** | Cognito, Secrets Manager | Quản lý Xác thực người dùng, Lưu trữ an toàn các khóa API/Thông tin nhạy cảm. |
-| **Tính toán & API** | API Gateway, AWS Lambda, App Runner | Cổng vào đồng bộ, Xử lý Logic Nghiệp vụ (Serverless), Hosting Frontend/Container. |
-| **Tầng AI/ML** | Amazon Bedrock | Cung cấp mô hình **Embedding** (RAG Retrieval) và **LLM** (RAG Generation) để tạo nội dung có căn cứ. |
-| **Dữ liệu & Lưu trữ** | RDS for PostgreSQL, DynamoDB, S3 | **RDS** (Vector Store, Hồ sơ người dùng), **DynamoDB** (Lịch sử chat/Truy cập nhanh), **S3** (Tài sản tĩnh/Cơ sở tri thức RAG). |
-| **Bất đồng bộ & Sự kiện** | EventBridge Scheduler, SQS, SES | Kích hoạt theo lịch trình, Đệm tin nhắn, Gửi Email. |
-| **Giám sát & DevOps** | CloudWatch, SNS, CodePipeline/CodeBuild | Thu thập Logs/Metrics, Cảnh báo khẩn cấp, Quản lý quy trình CI/CD tự động. |
-
-### Thiết kế thành phần 
-
-Hoạt động của nền tảng SorcererXStreme được xác định bởi ba luồng chức năng riêng biệt, liên kết với nhau, bao quát tất cả các hoạt động được thể hiện trong sơ đồ kiến trúc hệ thống cấp cao:
-
-#### Luồng 1: Tương tác API Thời gian thực 
-
-Đây là luồng xử lý đồng bộ, nơi người dùng gửi câu hỏi và nhận câu trả lời được tạo sinh từ LLM (sử dụng RAG - Retrieval-Augmented Generation).
-
-| # | Hoạt động | Dịch vụ AWS | Chi tiết & Vai trò |
-| :---: | :--- | :--- | :--- |
-| **1** | **Tiếp nhận & Lọc ở Tầng Biên** | **User (1)** → **Route 53** → **CloudFront** → **WAF** | Yêu cầu đi qua **DNS** (Route 53), được **tăng tốc & cache** (CloudFront), và được **kiểm tra bảo mật** (WAF) trước khi vào hệ thống. |
-| **2** | **Cổng vào & Xác thực** | **WAF** → **API Gateway (4)** → **Cognito (3)** | Yêu cầu hợp lệ được **định tuyến**. **Cognito** xác thực token người dùng. |
-| **3** | **Điều phối (Orchestration)** | **API Gateway (4)** → **Lambda (UserAPI) (5)** | `UserAPI`, nhận yêu cầu, xác thực và chuyển tiếp. |
-| **4** | **Lấy Vector (RAG B1)** | **Lambda (Chatbot) (5)** → **Bedrock (Embedding Model) (5)** | Chuyển câu hỏi thô thành **query\_vector** (tọa độ ý nghĩa) qua Bedrock (qua NAT Gateway). |
-| **5** | **Truy xuất Ngữ cảnh (RAG B2)** | **Lambda (Chatbot) (5)** → **RDS (PostgreSQL) (5)** | Gửi `query_vector` đến RDS (sử dụng tiện ích mở rộng vector) để thực hiện **Hybrid Search** và truy xuất các **chunk ngữ cảnh** liên quan. |
-| **6** | **Tạo sinh (RAG B3)** | **Lambda (Chatbot) (5)** → **Bedrock (LLM) (5)** | Gửi **Siêu Prompt** (Context + Câu hỏi) đến **Bedrock LLM** để tạo ra câu trả lời cuối cùng. |
-| **7** | **Lưu Lịch sử (Background)** | **Lambda (Chatbot) (5)** → **DynamoDB (5)** | Ghi log lịch sử chat/luận giải vào DynamoDB (qua Endpoint, không chờ phản hồi). |
-| **8** | **Hoàn tất** | **Lambda (Chatbot) (5)** → **API Gateway (4)** → **User (1)** | Trả câu trả lời cuối cùng về cho người dùng. |
+| **Edge & Auth** | Amplify, Cognito | - Amplify đảm nhận Hosting Frontend và Định tuyến.<br>- Cognito quản lý xác thực. |
+| **API & Routing** | API Gateway | - Endpoint chính cho tất cả các Lambda Backend và Lambda AI. |
+| **Compute Layer** | AWS Lambda | - Xử lý logic nghiệp vụ và các luồng Async/Sync. |
+| **Data & Integration** | DynamoDB, Parameter Store, NeonDB, Pinecone | - NeonDB(PostgreSQL bên ngoài) là DB chính. <br> - DynamoDB cho lịch sử/truy cập nhanh. <br> - Parameter Store lưu trữ bảo mật. |
+| **AI/ML** | Bedrock, Lambda (Embeddings), S3 |- Bedrock (LLM Model). <br> - S3 lưu trữ tài liệu thô RAG. <br> - Lambda Embeddings tạo vector. |
+| **Async & Monitoring** | EventBridge, SQS, SES, CloudWatch, SNS | - Các luồng Async và Giám sát hoạt động độc lập. |
+| **DevOps** | GitHub Actions, CloudFormation | - GitHub Actions đảm nhận quá trình Build, Test, và CloudFormation do Serverless Framework tạo ra là công cụ deploy chính. |
 
 
-#### Luồng 2: Thông báo Tử vi Hàng ngày (Bất đồng bộ)
+### Luồng Hoạt động
 
-Luồng xử lý theo lịch trình (Scheduler), sử dụng SQS để đệm và xử lý bất đồng bộ.
+#### 1. Luồng Tương tác API Thời gian thực (Synchronous Flow)
 
-| # | Hoạt động | Dịch vụ AWS | Chi tiết & Vai trò |
-| :---: | :--- | :--- | :--- |
-| **1** | **Kích hoạt Lịch trình** | **EventBridge Scheduler (6)** → **Lambda (TriggerReminder)** | Khởi tạo luồng tại thời điểm đã định. |
-| **2** | **Phân tán (Fan-Out)** | **Lambda** → **RDS** → **SQS (7)** | Lấy danh sách người dùng đăng ký từ RDS và đẩy các tin nhắn cá nhân vào **hàng đợi SQS** để xử lý tách biệt. |
-| **3** | **Xử lý & Phân phối** | **SQS (8)** → **Lambda (SendReminder)** → **SES** | `SendReminderLambda` được kích hoạt bởi SQS, tạo nội dung và gửi **email thông báo** đến người dùng thông qua Amazon SES. |
+Luồng này xử lý các yêu cầu chat và luận giải trực tiếp từ người dùng.
 
+* **(1) Tiếp nhận Yêu cầu:** User gửi yêu cầu trực tiếp đến AWS Amplify Endpoint.
+* **(2) Định tuyến & API:** Amplify chuyển tiếp yêu cầu đến API Gateway. API Gateway xác thực token Cognito và chuyển đến Lambda tương ứng (`SyncUser`, `Chatbot`, v.v.).
+* **(3) Xử lý Dữ liệu:** Lambda truy cập Parameter Store để lấy các khóa bí mật và truy cập dữ liệu tại NeonDB, DynamoDB.
+* **(4) RAG và AI:** Lambda Chatbot thực hiện luồng RAG:
+    * Sử dụng Bedrock (Embedding Model) để tạo vector cho câu hỏi.
+    * Truy vấn Pinecone (Vector Database) bằng vector đó.
+    * Gửi ngữ cảnh RAG (Context) đến Bedrock (LLM) để tạo sinh câu trả lời.
+* **(5) Phản hồi:** Lambda trả kết quả về API Gateway -> Amplify -> User.
 
-#### Luồng 3: DevOps (CI/CD)
+#### 2. Luồng Thông báo Tự động (Asynchronous Flow)
 
-Quy trình tự động hóa việc triển khai mã nguồn mới từ kho chứa code đến môi trường AWS.
+Luồng này được đơn giản hóa mà không cần RDS.
 
-| # | Hoạt động | Dịch vụ AWS | Chi tiết & Vai trò |
-| :---: | :--- | :--- | :--- |
-| **1** | **Nguồn Code & Kích hoạt** | **Developer (10)** → **GitHub (10)** → **CodePipeline (10)** | `git push` kích hoạt CodePipeline qua webhook. |
-| **2** | **Build & Kiểm thử** | **CodePipeline (10)** → **CodeBuild (10)** | Tải code, cài đặt dependency, chạy unit test và **đóng gói (Build)** artifacts. |
-| **3** | **Triển khai** | **CodeBuild** → **CloudFormation** | Triển khai phiên bản mới của các hàm Lambda, cập nhật cấu hình API Gateway và App Runner. |
+* **(1) Kích hoạt:** EventBridge Scheduler kích hoạt Lambda TriggerReminder.
+* **(2) Truy vấn Data:** Lambda truy vấn DynamoDB hoặc NeonDB để lấy danh sách người dùng đã đăng ký.
+* **(3) Phân phối:** Lambda tạo nội dung và gửi email thông qua Amazon SES.
 
+#### 3. Luồng triển khai (DevOps)
 
-## 4. Triển khai kỹ thuật 
+* **(1) Code Commit:** Developer đẩy code lên GitHub.
+* **(2) Build & Deploy:** GitHub Actions kích hoạt quá trình Build, Test và sử dụng CloudFormation sinh ra từ Serverless Framework để triển khai các hàm Lambda, API Gateway và các tài nguyên khác lên AWS.
 
-Dự án SorcererXStreme xây dựng dựa trên phương pháp Phát triển Agile-Iterative, tập trung vào việc cung cấp một phần gia tăng hoạt động với vai trò người dùng mở rộng và tích hợp RAG trong mỗi chu kỳ. Việc phát triển được cơ cấu thành một lộ trình 9 tuần bao gồm ba giai đoạn chính (Iter 3, 4 và 5) sau giai đoạn lập kế hoạch ban đầu.
-
-### Các giai đoạn triển khai
-
-Quá trình phát triển bao gồm bốn giai đoạn chính, được chia thành ba giai đoạn tập trung kéo dài 3 tuần:
-
-| Giai đoạn                                   | Thời gian      | Lĩnh vực tập trung |
-| :----------------------------------| :------------| :----------------------------------------------------------------------------------------------------------------------------------|
-| **I. Phân tích Yêu cầu & Tài liệu (Iter 3)** | 3 Tuần | Hoàn thiện tài liệu SRS (v2) và SDS (v2), đề xuất, đặt nền tảng cho vai trò mở rộng và RAG. |
-| **II. Thiết kế & Mở rộng (Iter 4)**  | 3 Tuần | Phát triển cốt lõi của pipeline RAG, triển khai hệ thống Vai trò Người dùng (Guest/Free/VIP), và cấu hình cơ sở hạ tầng AWS cốt lõi. |
-| **III. Tích hợp AWS & Kiểm thử (Iter 5)** | 3 Tuần | Triển khai hoàn chỉnh trên AWS, kiểm thử đầu cuối, và tối ưu hóa hiệu suất.                                                          |
-| **IV. Đánh giá & Bàn giao (Handoff)** | Tiếp diễn | Tối ưu hóa, báo cáo hiệu suất và chuẩn bị phát hành beta cuối cùng. |
-
-### Yêu cầu kỹ thuật & sản phẩm bàn giao theo Iter
-
-**Iter 3 – Tích hợp RAG & Thiết kế lại hệ thống (Tuần 1–2–3)**
-
-**Mục tiêu:** Phân tích lại các yêu cầu, hoàn thiện kiến trúc AWS, xác định các luồng trải nghiệm người dùng và tạo mẫu thiết kế RAG.
-
-| Hạng mục | Các nhiệm vụ chính | Trách nhiệm |
-| :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- |
-| **Tài liệu Hệ thống**  | Xem xét và cập nhật kiến trúc hiện có. Viết **SRS v2** (Chức năng & Phi chức năng) và **SDS v2**.                                                                                          | SE          |
-| **UX & Luồng Vai trò** | Thiết kế các luồng người dùng chi tiết cho quá trình chuyển đổi **Khách/Miễn phí/VIP**. Xác định giới hạn chức năng cho mỗi vai trò. Đề xuất **Giao diện nâng cấp VIP**.                   | SE          |
-| **Kiến trúc RAG**      | Đề xuất cơ chế RAG (nguồn dữ liệu, pipeline, lưu trữ embedding). Thiết kế pipeline RAG nguyên mẫu: văn bản -\> embedding -\> chỉ mục. **Thu thập Dữ liệu** (Tarot, Horoscope, Numerology). | AI          |
-| **Cơ sở hạ tầng AWS**  | Hoàn thiện **Sơ đồ Kiến trúc AWS** (Amplify, Lambda, DynamoDB, Cognito, S3). Tính toán **Ước tính Chi phí** tập trung vào các tùy chọn Miễn phí (Free-tier) và Serverless.                 | SE, AI      |
-
-**Sản phẩm Bàn giao:** Hoàn thành SRS v2, SDS v2, Sơ đồ Kiến trúc AWS kèm Ước tính Chi phí, tài liệu Luồng UX/Vai trò và thiết kế nguyên mẫu RAG.
-
-**Iter 4 – Vai trò Người dùng & Pipeline RAG Sản xuất (Tuần 4–5–6)**
-
-**Mục tiêu:** Triển khai hệ thống ủy quyền người dùng và tích hợp corpus dữ liệu RAG nền tảng.
-
-| Hạng mục                  | Các Nhiệm vụ Chính                                                                                                                                              | Trách nhiệm |
-| :-----------------------| :-------------------------------------------------------------------------------------------------------------------------------------------------------------| :--------- |
-| **Xác thực & Vai trò**    | Thiết kế lược đồ người dùng (khách, miễn phí, vip). Tích hợp **AWS Cognito** vào frontend. Xác định quyền truy cập API dựa trên vai trò người dùng.             | SE          |
-| **Chức năng VIP**         | Triển khai logic cho việc **giới hạn số lần trò chuyện, rút bài Tarot,** và chế độ xem Chiêm tinh chi tiết. Triển khai mô hình định giá và màn hình nâng cấp.   | SE          |
-| **Chuẩn bị Sản xuất RAG** | Làm sạch và chuẩn hóa dữ liệu. Triển khai truy xuất ngữ cảnh theo chủ đề (tình yêu, sự nghiệp, cung hoàng đạo). Xây dựng và lưu trữ **Corpus ban đầu trên S3**. | AI          |
-| **Tối ưu hóa AI**         | Tinh chỉnh mô hình embedding và kích thước chunk. Viết script cho **cập nhật dữ liệu tự động** (S3 -\> index).                                                  | AI          |
-
-**Sản phẩm Bàn giao:** Hệ thống vai trò người dùng (Guest/Free/VIP) hoạt động đầy đủ được tích hợp với Cognito. Các điểm cuối API RAG mock hoạt động trên môi trường cục bộ/phát triển, cho phép kiểm thử logic truy cập VIP.
-
-**Iter 5 – Triển khai AWS & Đánh giá (Tuần 7 – 8 – 9)**
-
-**Mục tiêu:** Hoàn thành triển khai đầy đủ trên đám mây, thực hiện kiểm thử toàn diện và chuẩn bị cho phát hành công khai.
-
-| Hạng mục | Các Nhiệm vụ Chính | Trách nhiệm |
-| :------------------------| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- |
-| **Cơ sở hạ tầng AWS**      | Cấu hình cuối cùng của **App Runner + Lambda**. Triển khai **DynamoDB, S3, Cognito**. Tạo **Chính sách IAM** tối thiểu.                                                                  | SE          |
-| **Giám sát & Ghi nhật ký** | Thiết lập **CloudWatch** cho việc ghi nhật ký của Lambda và Cognito. Tạo bảng điều khiển để giám sát mức sử dụng và chi phí.                                                             | SE          |
-| **Tinh chỉnh Mô hình AI**  | Tối ưu hóa **lời nhắc LLM (LLM prompt)** và pipeline RAG. Triển khai các cơ chế **kiểm soát token LLM** để quản lý chi phí.                                                              | AI          |
-| **Kiểm thử & Đánh giá**    | Viết **các trường hợp kiểm thử đầu cuối (end-to-end test cases)**. Kiểm thử toàn diện các vai trò, giới hạn VIP và độ chính xác của RAG. Báo cáo về độ chính xác của AI (trước/sau RAG). | AI          |
-
-**Sản phẩm Bàn giao:** Hệ thống ổn định chạy trên cơ sở hạ tầng AWS. Báo cáo hiệu suất, chi phí và kiểm thử (**AWS Service Cost and Performance Sheet**). Sẵn sàng cho việc kiểm thử Beta công khai.
 
 ## 5. Mốc thời gian & Các cột mốc 
 
-Dự án SorcererXStreme sẽ được thực hiện trong **khoảng thời gian phát triển tập trung 9 tuần** theo mô hình Agile-Iterative để nhanh chóng cung cấp một MVP với các tính năng chính như **RAG** và **hệ thống người dùng VIP**.
+Dự án SorcererXStreme sẽ được thực hiện trong khoảng thời gian phát triển tập trung 9 tuần theo mô hình Agile-Iterative để nhanh chóng cung cấp một MVP với các tính năng chính.
 
 ### Mốc thời gian Dự án
 
 | Iter  | Thời gian | Tuần | Trọng tâm chính | Các sản phẩm bàn giao chính |
 | :-------------------------------------- | :-------| :-----------| :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Iter 3: Thiết kế lại & Nguyên mẫu RAG** | 3 Tuần    | 1 – 2 **–** 3 | **Thiết kế Nền tảng & Tài liệu**        |- **SRS v2** và **SDS v2, Đề án** được hoàn thiện.<br> - **Sơ đồ Kiến trúc AWS** kèm Ước tính Chi phí đã sẵn sàng. <br> - Dữ liệu RAG được thu thập và pipeline ban đầu được thiết kế.             |
-| **Iter 4: Vai trò & Hệ thống VIP**        | 3 Tuần    | 4 – 5 – 6     | **Triển khai Logic Cốt lõi & Ủy quyền** | - **AWS Cognito** được tích hợp để xác thực người dùng. <br> - Logic vai trò **Khách/Miễn phí/VIP** đầy đủ được triển khai và có thể kiểm thử. <br> - Corpus dữ liệu RAG được xây dựng trên S3.       |
-| **Iter 5: Triển khai AWS & QA** | 3 Tuần    | 7 – 8 – 9     | **Triển khai Đám mây & Ổn định** | - Hệ thống chạy **ổn định trên AWS**. <br> - Hoàn thành kiểm thử đầu cuối đầy đủ. **AWS Cost and Performance Sheet** được hoàn thiện. <br> - Sẵn sàng cho Phát hành Beta. |
+| **Iter 3: Thiết kế lại & Nguyên mẫu RAG** | 3 Tuần | 1 – 2 – 3 | Thiết kế Nền tảng & Tài liệu|- SRS v2 và SDS v2, Đề án được hoàn thiện.<br> - Sơ đồ kiến trúc AWS và bảng ước tính chi phí. <br> - Dữ liệu RAG được thu thập và pipeline ban đầu được thiết kế.             |
+| **Iter 4: Vai trò & Hệ thống VIP**        | 3 Tuần    | 4 – 5 – 6     | Triển khai Logic Cốt lõi & Ủy quyền | - AWS Cognito được tích hợp để xác thực người dùng. <br> - Logic vai trò Guest/Miễn phí/VIP đầy đủ được triển khai và có thể kiểm thử. <br> - Corpus dữ liệu RAG được xây dựng trên S3.       |
+| **Iter 5: Triển khai AWS & QA** | 3 Tuần    | 7 – 8 – 9     | Triển khai Đám mây & Ổn định | - Hệ thống chạy ổn định trên AWS. <br> - Hoàn thành kiểm thử đầu cuối đầy đủ. AWS Cost and Performance Sheet được hoàn thiện. <br> - Sẵn sàng cho môi trường thực thi. |
 
 ## 6. Ước tính ngân sách 
-Dự án được chúng tôi giả định mức sử dụng thấp cho môi trường Demo và MVP (khoảng 5.000 yêu cầu/tháng).
+Dự án được chúng tôi giả định mức sử dụng thấp cho môi trường Demo (khoảng 5.000 yêu cầu/tháng).
 
 ### Chi phí Cơ sở Hạ tầng
 
 | Layer |  Dịch vụ AWS | Mục tiêu | Chi phí |
 | :---: | :--- | :--- | :---: |
 | **I. COMPUTE & API** | | | |
-| 1 | **AWS Lambda** | Backend Logic (RAG, Compute) | $0.22 |
-| 2 | **Amazon API Gateway** | Synchronous Request Gateway | $0.03 |
-| 3 | **AWS App Runner** | Host Frontend (Next.js) | $10.20 |
+| 1 | **AWS Lambda** | Xử lí Backend Logic (RAG, Compute) | $0.00 |
+| 2 | **Amazon API Gateway** | Synchronous Request Gateway | $0.025 |
+| 3 | **AWS Amplify** | Host Frontend (Next.js) | $2.59 |
 | **II. DATA & STORAGE** | | | |
-| 4 | **RDS for PostgreSQL** | Relational Data/Profiles | $37.14 |
-| 5 | **Amazon DynamoDB** | Chat History/Rate Limiting | $0.29 |
-| 6 | **Amazon S3** | RAG Knowledge Base/Assets | $0.88 |
+| 4 | **Amazon DynamoDB** | Chat History/Rate Limiting | $0.89 |
+| 5 | **Amazon S3** | RAG Knowledge Base/Assets | $0.03 |
 | **III. AI & SECURITY** | | | |
-| 7 | **Amazon Bedrock** | Embedding & LLM/Content Generation | $2.45 |
-| 8 | **Amazon Cognito** | Authentication/User Roles (MAUs) | $0.00 |
-| 9 | **Secrets Manager** | Store Master Keys (Fixed Cost) | $2.15 |
+| 6 | **Amazon Bedrock** | Embedding & LLM/Content Generation | $2.65 |
+| 7 | **Amazon Cognito** | Authentication/User Roles | $0.00 |
+| 8 | **Parameter Store** | Store Master Keys | $0.00 |
 | **IV. ASYNC & MONITORING** | | | |
-| 10 | **EventBridge Scheduler** | Daily Horoscope Trigger | $0.00 |
-| 11 | **Amazon SQS** | Notification Queue | $0.08 |
-| 12 | **Amazon SES** | Email Delivery | $0.24 |
-| 13 | **Amazon CloudWatch** | Logs/Metrics/Alarms | $4.46 |
-| 14 | **Amazon SNS** | Alert Notifications | $0.00 |
-| **V. NETWORK & DELIVERY** | | | |
-| 15 | **Amazon Route 53** | DNS/Domain Management | $0.50 |
-| 16 | **Amazon CloudFront** | CDN/Content Distribution/Low Latency | $0.24 |
-| 17 | **AWS WAF** | Web Application Firewall (Layer 7 Protection) | $9.03 |
-| **VI. DEVOPS & INFRASTRUCTURE** | | | |
-| 19 | **AWS CodePipeline** | CI/CD (Automated Deployment) | $1.00 |
-| 20 | **AWS CloudFormation** | Infra-as-Code (Resource Management) | $0.00 |
+| 9 | **EventBridge Scheduler** | Daily Horoscope Trigger | $0.00 |
+| 10 | **Amazon SES** | Email Delivery | $0.48 |
+| 11 | **Amazon CloudWatch** | Logs/Metrics/Alarms | $2.4 |
+| 12 | **Amazon SNS** | Alert Notifications | $0.00 |
+| 13 | **Cloudformation** | Deploy for dev | $0.00 |
 
-Link ước tính ngân sách: 
-- [Compute + Monitor Layer + AI](https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing) 
-- [Bedrock](https://drive.google.com/file/d/1ZqoGQjxSpZVKVjAOMy3Ps37iUDCm95k7/view?usp=drive_link)
-- [Network + CICD](https://drive.google.com/file/d/1xseIv9D2yimf75tc3UdlheUD36VIQHVa/view?usp=drive_link)
+Link: [Bảng uớc tính chi phí](https://drive.google.com/file/d/1Cy0ivN1wIOJ8DthIOE4cYYFG1BzESt5m/view?usp=sharing)
 
-### Tổng Chi Phí Dự Án: $67.73/month
+### Tổng Chi Phí Dự Án: $9.06/month
+
 
 ## 7. Đánh giá rủi ro 
 
 | Rủi ro | Tác động   | Xác suất | Chiến lược giảm thiểu |
 | :---------------------------------| :-------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------|
-| **Ảo giác LLM** | Cao | Trung bình | Triển khai **Bộ kiểm tra Thực tế RAG (RAG Fact Checker)**; sử dụng LLM chất lượng cao; căn cứ câu trả lời vào các nguồn đã được xác minh.      |
-| **Vượt chi phí LLM** | Cao | Trung bình | Thiết lập **Cảnh báo Ngân sách AWS (AWS Budget Alerts)**; triển khai **kiểm soát token**; sử dụng mô hình LLM phân tầng (Miễn phí so với VIP). |
+| **Ảo giác LLM** | Cao | Trung bình | Triển khai Bộ kiểm tra Thực tế RAG (RAG Fact Checker); sử dụng LLM chất lượng cao; căn cứ câu trả lời vào các nguồn đã được xác minh.      |
+| **Vượt chi phí LLM** | Cao | Trung bình | Thiết lập Cảnh báo Ngân sách AWS (AWS Budget Alerts); triển khai kiểm soát token; sử dụng mô hình LLM phân tầng (Miễn phí so với VIP). |
 | **Độ trễ Truy xuất RAG**            | Trung bình | Trung bình | Tối ưu hóa việc lập chỉ mục RAG (FAISS); tối ưu hóa kích thước chunk và lựa chọn mô hình embedding.                                            |
-| **Vi phạm Bảo mật**                 | Cao        | Thấp       | Sử dụng **Cognito** để xác thực và **Secret Manager** để xử lý thông tin xác thực.                                                             |
+| **Vi phạm Bảo mật**                 | Cao        | Thấp       | Sử dụng Cognito để xác thực và Secret Manager để xử lý thông tin xác thực.                                                             |
 
 ## 8. Kết quả mong đợi
 
@@ -228,7 +150,7 @@ Link ước tính ngân sách:
 ### Giá trị dài hạn
 
 *   **Khả năng lợi nhuận:** Mô hình đăng ký VIP tạo ra một con đường rõ ràng, ổn định để tạo doanh thu.
-*   **Nền tảng dữ liệu:** Một cơ sở tri thức huyền học độc quyền, đã được xác minh (corpus RAG) được thiết lập như một tài sản có giá trị, có thể tái sử dụng.
-*   **Mở rộng tương lai:** Kiến trúc AWS linh hoạt (Lambda, Bedrock) dễ dàng nâng cấp cho các ứng dụng di động hoặc tính năng trò chuyện bằng giọng nói.
+*   **Nền tảng dữ liệu:** Một cơ sở tri thức huyền học độc quyền, đã được xác minh và được thiết lập như một tài sản có giá trị, có thể tái sử dụng.
+*   **Mở rộng tương lai:** Kiến trúc AWS linh hoạt dễ dàng nâng cấp cho các ứng dụng di động hoặc tính năng trò chuyện bằng giọng nói.
 
 
