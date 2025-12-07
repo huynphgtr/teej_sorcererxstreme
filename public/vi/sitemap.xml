@@ -26,6 +26,66 @@
                 href="http://localhost:1313/repo-name/vi/1-proposal/"
                 />
   </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.1-workshop-overview/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.1-workshop-overview/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.1-workshop-overview/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.3-backend-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/"
+                />
+  </url><url>
     <loc>http://localhost:1313/repo-name/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"
