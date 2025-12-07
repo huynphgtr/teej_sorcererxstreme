@@ -15,21 +15,21 @@
     <title>Đề Án :: Báo cáo đề án thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1762847912" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1762847912" rel="stylesheet">
-    <link href="../../css/hybrid.css?1762847912" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1762847912" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1762847912" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1762847912" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1762847912" rel="stylesheet">
-    <link href="../../css/theme.css?1762847912" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1762847912" rel="stylesheet">
+    <link href="../../css/nucleus.css?1765081944" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1765081944" rel="stylesheet">
+    <link href="../../css/hybrid.css?1765081944" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1765081944" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1765081944" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1765081944" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1765081944" rel="stylesheet">
+    <link href="../../css/theme.css?1765081944" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1765081944" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1762847912" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1765081944" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1762847912"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1765081944"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1762847912"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1762847912"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1765081944"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1765081944"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/repo-name\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1762847912"></script>
+<script type="text/javascript" src="../../js/search.js?1765081944"></script>
  
   </div>
 
@@ -288,14 +288,8 @@
     </li>
     <li><a href="#3-kiến-trúc-giải-pháp">3. Kiến trúc giải pháp</a>
       <ul>
-        <li><a href="#các-dịch-vụ-aws-được-sử-dụng">Các dịch vụ AWS được sử dụng</a></li>
-        <li><a href="#thiết-kế-thành-phần">Thiết kế thành phần</a></li>
-      </ul>
-    </li>
-    <li><a href="#4-triển-khai-kỹ-thuật">4. Triển khai kỹ thuật</a>
-      <ul>
-        <li><a href="#các-giai-đoạn-triển-khai">Các giai đoạn triển khai</a></li>
-        <li><a href="#yêu-cầu-kỹ-thuật--sản-phẩm-bàn-giao-theo-iter">Yêu cầu kỹ thuật &amp; sản phẩm bàn giao theo Iter</a></li>
+        <li><a href="#dịch-vụ-sử-dụng">Dịch vụ sử dụng</a></li>
+        <li><a href="#luồng-hoạt-động">Luồng Hoạt động</a></li>
       </ul>
     </li>
     <li><a href="#5-mốc-thời-gian--các-cột-mốc">5. Mốc thời gian &amp; Các cột mốc</a>
@@ -306,7 +300,7 @@
     <li><a href="#6-ước-tính-ngân-sách">6. Ước tính ngân sách</a>
       <ul>
         <li><a href="#chi-phí-cơ-sở-hạ-tầng">Chi phí Cơ sở Hạ tầng</a></li>
-        <li><a href="#tổng-chi-phí-dự-án-6773month">Tổng Chi Phí Dự Án: $67.73/month</a></li>
+        <li><a href="#tổng-chi-phí-dự-án-906month">Tổng Chi Phí Dự Án: $9.06/month</a></li>
       </ul>
     </li>
     <li><a href="#7-đánh-giá-rủi-ro">7. Đánh giá rủi ro</a></li>
@@ -394,322 +388,84 @@
 </table>
 <h2 id="3-kiến-trúc-giải-pháp">3. Kiến trúc giải pháp</h2>
 <p>Nền tảng SorcererXStreme sử dụng kiến trúc hybrid serverless trên AWS, được thiết kế tỉ mỉ để xử lý các tương tác người dùng theo thời gian thực, các tác vụ theo lịch trình và giám sát tự động. Thiết kế toàn diện này đảm bảo tính toán chuyên biệt, khả năng mở rộng cao và bảo mật nghiêm ngặt trên tất cả các luồng chức năng.</p>
-<p><img src="../../images/High_Level_System_Architecture.drawio.png" alt="Sơ đồ kiến trúc"></p>
-<h3 id="các-dịch-vụ-aws-được-sử-dụng">Các dịch vụ AWS được sử dụng</h3>
+<p><img src="../../images/High_Level_System_Architecture.drawio%282%29.png" alt="Sơ đồ kiến trúc"></p>
+<h3 id="dịch-vụ-sử-dụng">Dịch vụ sử dụng</h3>
 <table>
   <thead>
       <tr>
           <th style="text-align: left">Lớp</th>
-          <th style="text-align: left">Dịch vụ AWS</th>
-          <th style="text-align: left">Vai trò Chính</th>
+          <th style="text-align: left">Dịch vụ</th>
+          <th style="text-align: left">Vai trò và Mối quan hệ</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><strong>Mạng &amp; Biên</strong></td>
-          <td style="text-align: left">Route 53, CloudFront, WAF</td>
-          <td style="text-align: left">Định tuyến DNS, Tăng tốc Caching, Lọc lưu lượng bảo mật.</td>
+          <td style="text-align: left"><strong>Edge &amp; Auth</strong></td>
+          <td style="text-align: left">Amplify, Cognito</td>
+          <td style="text-align: left">- Amplify đảm nhận Hosting Frontend và Định tuyến.<br>- Cognito quản lý xác thực.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Bảo mật &amp; Danh tính</strong></td>
-          <td style="text-align: left">Cognito, Secrets Manager</td>
-          <td style="text-align: left">Quản lý Xác thực người dùng, Lưu trữ an toàn các khóa API/Thông tin nhạy cảm.</td>
+          <td style="text-align: left"><strong>API &amp; Routing</strong></td>
+          <td style="text-align: left">API Gateway</td>
+          <td style="text-align: left">- Endpoint chính cho tất cả các Lambda Backend và Lambda AI.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Tính toán &amp; API</strong></td>
-          <td style="text-align: left">API Gateway, AWS Lambda, App Runner</td>
-          <td style="text-align: left">Cổng vào đồng bộ, Xử lý Logic Nghiệp vụ (Serverless), Hosting Frontend/Container.</td>
+          <td style="text-align: left"><strong>Compute Layer</strong></td>
+          <td style="text-align: left">AWS Lambda</td>
+          <td style="text-align: left">- Xử lý logic nghiệp vụ và các luồng Async/Sync.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Tầng AI/ML</strong></td>
-          <td style="text-align: left">Amazon Bedrock</td>
-          <td style="text-align: left">Cung cấp mô hình <strong>Embedding</strong> (RAG Retrieval) và <strong>LLM</strong> (RAG Generation) để tạo nội dung có căn cứ.</td>
+          <td style="text-align: left"><strong>Data &amp; Integration</strong></td>
+          <td style="text-align: left">DynamoDB, Parameter Store, NeonDB, Pinecone</td>
+          <td style="text-align: left">- NeonDB(PostgreSQL bên ngoài) là DB chính. <br> - DynamoDB cho lịch sử/truy cập nhanh. <br> - Parameter Store lưu trữ bảo mật.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Dữ liệu &amp; Lưu trữ</strong></td>
-          <td style="text-align: left">RDS for PostgreSQL, DynamoDB, S3</td>
-          <td style="text-align: left"><strong>RDS</strong> (Vector Store, Hồ sơ người dùng), <strong>DynamoDB</strong> (Lịch sử chat/Truy cập nhanh), <strong>S3</strong> (Tài sản tĩnh/Cơ sở tri thức RAG).</td>
+          <td style="text-align: left"><strong>AI/ML</strong></td>
+          <td style="text-align: left">Bedrock, Lambda (Embeddings), S3</td>
+          <td style="text-align: left">- Bedrock (LLM Model). <br> - S3 lưu trữ tài liệu thô RAG. <br> - Lambda Embeddings tạo vector.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Bất đồng bộ &amp; Sự kiện</strong></td>
-          <td style="text-align: left">EventBridge Scheduler, SQS, SES</td>
-          <td style="text-align: left">Kích hoạt theo lịch trình, Đệm tin nhắn, Gửi Email.</td>
+          <td style="text-align: left"><strong>Async &amp; Monitoring</strong></td>
+          <td style="text-align: left">EventBridge, SQS, SES, CloudWatch, SNS</td>
+          <td style="text-align: left">- Các luồng Async và Giám sát hoạt động độc lập.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Giám sát &amp; DevOps</strong></td>
-          <td style="text-align: left">CloudWatch, SNS, CodePipeline/CodeBuild</td>
-          <td style="text-align: left">Thu thập Logs/Metrics, Cảnh báo khẩn cấp, Quản lý quy trình CI/CD tự động.</td>
+          <td style="text-align: left"><strong>DevOps</strong></td>
+          <td style="text-align: left">GitHub Actions, CloudFormation</td>
+          <td style="text-align: left">- GitHub Actions đảm nhận quá trình Build, Test, và CloudFormation do Serverless Framework tạo ra là công cụ deploy chính.</td>
       </tr>
   </tbody>
 </table>
-<h3 id="thiết-kế-thành-phần">Thiết kế thành phần</h3>
-<p>Hoạt động của nền tảng SorcererXStreme được xác định bởi ba luồng chức năng riêng biệt, liên kết với nhau, bao quát tất cả các hoạt động được thể hiện trong sơ đồ kiến trúc hệ thống cấp cao:</p>
-<h4 id="luồng-1-tương-tác-api-thời-gian-thực">Luồng 1: Tương tác API Thời gian thực</h4>
-<p>Đây là luồng xử lý đồng bộ, nơi người dùng gửi câu hỏi và nhận câu trả lời được tạo sinh từ LLM (sử dụng RAG - Retrieval-Augmented Generation).</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">#</th>
-          <th style="text-align: left">Hoạt động</th>
-          <th style="text-align: left">Dịch vụ AWS</th>
-          <th style="text-align: left">Chi tiết &amp; Vai trò</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><strong>1</strong></td>
-          <td style="text-align: left"><strong>Tiếp nhận &amp; Lọc ở Tầng Biên</strong></td>
-          <td style="text-align: left"><strong>User (1)</strong> → <strong>Route 53</strong> → <strong>CloudFront</strong> → <strong>WAF</strong></td>
-          <td style="text-align: left">Yêu cầu đi qua <strong>DNS</strong> (Route 53), được <strong>tăng tốc &amp; cache</strong> (CloudFront), và được <strong>kiểm tra bảo mật</strong> (WAF) trước khi vào hệ thống.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>2</strong></td>
-          <td style="text-align: left"><strong>Cổng vào &amp; Xác thực</strong></td>
-          <td style="text-align: left"><strong>WAF</strong> → <strong>API Gateway (4)</strong> → <strong>Cognito (3)</strong></td>
-          <td style="text-align: left">Yêu cầu hợp lệ được <strong>định tuyến</strong>. <strong>Cognito</strong> xác thực token người dùng.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>3</strong></td>
-          <td style="text-align: left"><strong>Điều phối (Orchestration)</strong></td>
-          <td style="text-align: left"><strong>API Gateway (4)</strong> → <strong>Lambda (UserAPI) (5)</strong></td>
-          <td style="text-align: left"><code>UserAPI</code>, nhận yêu cầu, xác thực và chuyển tiếp.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>4</strong></td>
-          <td style="text-align: left"><strong>Lấy Vector (RAG B1)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>Bedrock (Embedding Model) (5)</strong></td>
-          <td style="text-align: left">Chuyển câu hỏi thô thành <strong>query_vector</strong> (tọa độ ý nghĩa) qua Bedrock (qua NAT Gateway).</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>5</strong></td>
-          <td style="text-align: left"><strong>Truy xuất Ngữ cảnh (RAG B2)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>RDS (PostgreSQL) (5)</strong></td>
-          <td style="text-align: left">Gửi <code>query_vector</code> đến RDS (sử dụng tiện ích mở rộng vector) để thực hiện <strong>Hybrid Search</strong> và truy xuất các <strong>chunk ngữ cảnh</strong> liên quan.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>6</strong></td>
-          <td style="text-align: left"><strong>Tạo sinh (RAG B3)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>Bedrock (LLM) (5)</strong></td>
-          <td style="text-align: left">Gửi <strong>Siêu Prompt</strong> (Context + Câu hỏi) đến <strong>Bedrock LLM</strong> để tạo ra câu trả lời cuối cùng.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>7</strong></td>
-          <td style="text-align: left"><strong>Lưu Lịch sử (Background)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>DynamoDB (5)</strong></td>
-          <td style="text-align: left">Ghi log lịch sử chat/luận giải vào DynamoDB (qua Endpoint, không chờ phản hồi).</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>8</strong></td>
-          <td style="text-align: left"><strong>Hoàn tất</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>API Gateway (4)</strong> → <strong>User (1)</strong></td>
-          <td style="text-align: left">Trả câu trả lời cuối cùng về cho người dùng.</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="luồng-2-thông-báo-tử-vi-hàng-ngày-bất-đồng-bộ">Luồng 2: Thông báo Tử vi Hàng ngày (Bất đồng bộ)</h4>
-<p>Luồng xử lý theo lịch trình (Scheduler), sử dụng SQS để đệm và xử lý bất đồng bộ.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">#</th>
-          <th style="text-align: left">Hoạt động</th>
-          <th style="text-align: left">Dịch vụ AWS</th>
-          <th style="text-align: left">Chi tiết &amp; Vai trò</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><strong>1</strong></td>
-          <td style="text-align: left"><strong>Kích hoạt Lịch trình</strong></td>
-          <td style="text-align: left"><strong>EventBridge Scheduler (6)</strong> → <strong>Lambda (TriggerReminder)</strong></td>
-          <td style="text-align: left">Khởi tạo luồng tại thời điểm đã định.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>2</strong></td>
-          <td style="text-align: left"><strong>Phân tán (Fan-Out)</strong></td>
-          <td style="text-align: left"><strong>Lambda</strong> → <strong>RDS</strong> → <strong>SQS (7)</strong></td>
-          <td style="text-align: left">Lấy danh sách người dùng đăng ký từ RDS và đẩy các tin nhắn cá nhân vào <strong>hàng đợi SQS</strong> để xử lý tách biệt.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>3</strong></td>
-          <td style="text-align: left"><strong>Xử lý &amp; Phân phối</strong></td>
-          <td style="text-align: left"><strong>SQS (8)</strong> → <strong>Lambda (SendReminder)</strong> → <strong>SES</strong></td>
-          <td style="text-align: left"><code>SendReminderLambda</code> được kích hoạt bởi SQS, tạo nội dung và gửi <strong>email thông báo</strong> đến người dùng thông qua Amazon SES.</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="luồng-3-devops-cicd">Luồng 3: DevOps (CI/CD)</h4>
-<p>Quy trình tự động hóa việc triển khai mã nguồn mới từ kho chứa code đến môi trường AWS.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">#</th>
-          <th style="text-align: left">Hoạt động</th>
-          <th style="text-align: left">Dịch vụ AWS</th>
-          <th style="text-align: left">Chi tiết &amp; Vai trò</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><strong>1</strong></td>
-          <td style="text-align: left"><strong>Nguồn Code &amp; Kích hoạt</strong></td>
-          <td style="text-align: left"><strong>Developer (10)</strong> → <strong>GitHub (10)</strong> → <strong>CodePipeline (10)</strong></td>
-          <td style="text-align: left"><code>git push</code> kích hoạt CodePipeline qua webhook.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>2</strong></td>
-          <td style="text-align: left"><strong>Build &amp; Kiểm thử</strong></td>
-          <td style="text-align: left"><strong>CodePipeline (10)</strong> → <strong>CodeBuild (10)</strong></td>
-          <td style="text-align: left">Tải code, cài đặt dependency, chạy unit test và <strong>đóng gói (Build)</strong> artifacts.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>3</strong></td>
-          <td style="text-align: left"><strong>Triển khai</strong></td>
-          <td style="text-align: left"><strong>CodeBuild</strong> → <strong>CloudFormation</strong></td>
-          <td style="text-align: left">Triển khai phiên bản mới của các hàm Lambda, cập nhật cấu hình API Gateway và App Runner.</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="4-triển-khai-kỹ-thuật">4. Triển khai kỹ thuật</h2>
-<p>Dự án SorcererXStreme xây dựng dựa trên phương pháp Phát triển Agile-Iterative, tập trung vào việc cung cấp một phần gia tăng hoạt động với vai trò người dùng mở rộng và tích hợp RAG trong mỗi chu kỳ. Việc phát triển được cơ cấu thành một lộ trình 9 tuần bao gồm ba giai đoạn chính (Iter 3, 4 và 5) sau giai đoạn lập kế hoạch ban đầu.</p>
-<h3 id="các-giai-đoạn-triển-khai">Các giai đoạn triển khai</h3>
-<p>Quá trình phát triển bao gồm bốn giai đoạn chính, được chia thành ba giai đoạn tập trung kéo dài 3 tuần:</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Giai đoạn</th>
-          <th style="text-align: left">Thời gian</th>
-          <th style="text-align: left">Lĩnh vực tập trung</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>I. Phân tích Yêu cầu &amp; Tài liệu (Iter 3)</strong></td>
-          <td style="text-align: left">3 Tuần</td>
-          <td style="text-align: left">Hoàn thiện tài liệu SRS (v2) và SDS (v2), đề xuất, đặt nền tảng cho vai trò mở rộng và RAG.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>II. Thiết kế &amp; Mở rộng (Iter 4)</strong></td>
-          <td style="text-align: left">3 Tuần</td>
-          <td style="text-align: left">Phát triển cốt lõi của pipeline RAG, triển khai hệ thống Vai trò Người dùng (Guest/Free/VIP), và cấu hình cơ sở hạ tầng AWS cốt lõi.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>III. Tích hợp AWS &amp; Kiểm thử (Iter 5)</strong></td>
-          <td style="text-align: left">3 Tuần</td>
-          <td style="text-align: left">Triển khai hoàn chỉnh trên AWS, kiểm thử đầu cuối, và tối ưu hóa hiệu suất.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>IV. Đánh giá &amp; Bàn giao (Handoff)</strong></td>
-          <td style="text-align: left">Tiếp diễn</td>
-          <td style="text-align: left">Tối ưu hóa, báo cáo hiệu suất và chuẩn bị phát hành beta cuối cùng.</td>
-      </tr>
-  </tbody>
-</table>
-<h3 id="yêu-cầu-kỹ-thuật--sản-phẩm-bàn-giao-theo-iter">Yêu cầu kỹ thuật &amp; sản phẩm bàn giao theo Iter</h3>
-<p><strong>Iter 3 – Tích hợp RAG &amp; Thiết kế lại hệ thống (Tuần 1–2–3)</strong></p>
-<p><strong>Mục tiêu:</strong> Phân tích lại các yêu cầu, hoàn thiện kiến trúc AWS, xác định các luồng trải nghiệm người dùng và tạo mẫu thiết kế RAG.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Hạng mục</th>
-          <th style="text-align: left">Các nhiệm vụ chính</th>
-          <th style="text-align: left">Trách nhiệm</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>Tài liệu Hệ thống</strong></td>
-          <td style="text-align: left">Xem xét và cập nhật kiến trúc hiện có. Viết <strong>SRS v2</strong> (Chức năng &amp; Phi chức năng) và <strong>SDS v2</strong>.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>UX &amp; Luồng Vai trò</strong></td>
-          <td style="text-align: left">Thiết kế các luồng người dùng chi tiết cho quá trình chuyển đổi <strong>Khách/Miễn phí/VIP</strong>. Xác định giới hạn chức năng cho mỗi vai trò. Đề xuất <strong>Giao diện nâng cấp VIP</strong>.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Kiến trúc RAG</strong></td>
-          <td style="text-align: left">Đề xuất cơ chế RAG (nguồn dữ liệu, pipeline, lưu trữ embedding). Thiết kế pipeline RAG nguyên mẫu: văn bản -&gt; embedding -&gt; chỉ mục. <strong>Thu thập Dữ liệu</strong> (Tarot, Horoscope, Numerology).</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Cơ sở hạ tầng AWS</strong></td>
-          <td style="text-align: left">Hoàn thiện <strong>Sơ đồ Kiến trúc AWS</strong> (Amplify, Lambda, DynamoDB, Cognito, S3). Tính toán <strong>Ước tính Chi phí</strong> tập trung vào các tùy chọn Miễn phí (Free-tier) và Serverless.</td>
-          <td style="text-align: left">SE, AI</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Sản phẩm Bàn giao:</strong> Hoàn thành SRS v2, SDS v2, Sơ đồ Kiến trúc AWS kèm Ước tính Chi phí, tài liệu Luồng UX/Vai trò và thiết kế nguyên mẫu RAG.</p>
-<p><strong>Iter 4 – Vai trò Người dùng &amp; Pipeline RAG Sản xuất (Tuần 4–5–6)</strong></p>
-<p><strong>Mục tiêu:</strong> Triển khai hệ thống ủy quyền người dùng và tích hợp corpus dữ liệu RAG nền tảng.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Hạng mục</th>
-          <th style="text-align: left">Các Nhiệm vụ Chính</th>
-          <th style="text-align: left">Trách nhiệm</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>Xác thực &amp; Vai trò</strong></td>
-          <td style="text-align: left">Thiết kế lược đồ người dùng (khách, miễn phí, vip). Tích hợp <strong>AWS Cognito</strong> vào frontend. Xác định quyền truy cập API dựa trên vai trò người dùng.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Chức năng VIP</strong></td>
-          <td style="text-align: left">Triển khai logic cho việc <strong>giới hạn số lần trò chuyện, rút bài Tarot,</strong> và chế độ xem Chiêm tinh chi tiết. Triển khai mô hình định giá và màn hình nâng cấp.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Chuẩn bị Sản xuất RAG</strong></td>
-          <td style="text-align: left">Làm sạch và chuẩn hóa dữ liệu. Triển khai truy xuất ngữ cảnh theo chủ đề (tình yêu, sự nghiệp, cung hoàng đạo). Xây dựng và lưu trữ <strong>Corpus ban đầu trên S3</strong>.</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Tối ưu hóa AI</strong></td>
-          <td style="text-align: left">Tinh chỉnh mô hình embedding và kích thước chunk. Viết script cho <strong>cập nhật dữ liệu tự động</strong> (S3 -&gt; index).</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Sản phẩm Bàn giao:</strong> Hệ thống vai trò người dùng (Guest/Free/VIP) hoạt động đầy đủ được tích hợp với Cognito. Các điểm cuối API RAG mock hoạt động trên môi trường cục bộ/phát triển, cho phép kiểm thử logic truy cập VIP.</p>
-<p><strong>Iter 5 – Triển khai AWS &amp; Đánh giá (Tuần 7 – 8 – 9)</strong></p>
-<p><strong>Mục tiêu:</strong> Hoàn thành triển khai đầy đủ trên đám mây, thực hiện kiểm thử toàn diện và chuẩn bị cho phát hành công khai.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Hạng mục</th>
-          <th style="text-align: left">Các Nhiệm vụ Chính</th>
-          <th style="text-align: left">Trách nhiệm</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>Cơ sở hạ tầng AWS</strong></td>
-          <td style="text-align: left">Cấu hình cuối cùng của <strong>App Runner + Lambda</strong>. Triển khai <strong>DynamoDB, S3, Cognito</strong>. Tạo <strong>Chính sách IAM</strong> tối thiểu.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Giám sát &amp; Ghi nhật ký</strong></td>
-          <td style="text-align: left">Thiết lập <strong>CloudWatch</strong> cho việc ghi nhật ký của Lambda và Cognito. Tạo bảng điều khiển để giám sát mức sử dụng và chi phí.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Tinh chỉnh Mô hình AI</strong></td>
-          <td style="text-align: left">Tối ưu hóa <strong>lời nhắc LLM (LLM prompt)</strong> và pipeline RAG. Triển khai các cơ chế <strong>kiểm soát token LLM</strong> để quản lý chi phí.</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Kiểm thử &amp; Đánh giá</strong></td>
-          <td style="text-align: left">Viết <strong>các trường hợp kiểm thử đầu cuối (end-to-end test cases)</strong>. Kiểm thử toàn diện các vai trò, giới hạn VIP và độ chính xác của RAG. Báo cáo về độ chính xác của AI (trước/sau RAG).</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Sản phẩm Bàn giao:</strong> Hệ thống ổn định chạy trên cơ sở hạ tầng AWS. Báo cáo hiệu suất, chi phí và kiểm thử (<strong>AWS Service Cost and Performance Sheet</strong>). Sẵn sàng cho việc kiểm thử Beta công khai.</p>
+<h3 id="luồng-hoạt-động">Luồng Hoạt động</h3>
+<h4 id="1-luồng-tương-tác-api-thời-gian-thực-synchronous-flow">1. Luồng Tương tác API Thời gian thực (Synchronous Flow)</h4>
+<p>Luồng này xử lý các yêu cầu chat và luận giải trực tiếp từ người dùng.</p>
+<ul>
+<li><strong>(1) Tiếp nhận Yêu cầu:</strong> User gửi yêu cầu trực tiếp đến AWS Amplify Endpoint.</li>
+<li><strong>(2) Định tuyến &amp; API:</strong> Amplify chuyển tiếp yêu cầu đến API Gateway. API Gateway xác thực token Cognito và chuyển đến Lambda tương ứng (<code>SyncUser</code>, <code>Chatbot</code>, v.v.).</li>
+<li><strong>(3) Xử lý Dữ liệu:</strong> Lambda truy cập Parameter Store để lấy các khóa bí mật và truy cập dữ liệu tại NeonDB, DynamoDB.</li>
+<li><strong>(4) RAG và AI:</strong> Lambda Chatbot thực hiện luồng RAG:
+<ul>
+<li>Sử dụng Bedrock (Embedding Model) để tạo vector cho câu hỏi.</li>
+<li>Truy vấn Pinecone (Vector Database) bằng vector đó.</li>
+<li>Gửi ngữ cảnh RAG (Context) đến Bedrock (LLM) để tạo sinh câu trả lời.</li>
+</ul>
+</li>
+<li><strong>(5) Phản hồi:</strong> Lambda trả kết quả về API Gateway -&gt; Amplify -&gt; User.</li>
+</ul>
+<h4 id="2-luồng-thông-báo-tự-động-asynchronous-flow">2. Luồng Thông báo Tự động (Asynchronous Flow)</h4>
+<p>Luồng này được đơn giản hóa mà không cần RDS.</p>
+<ul>
+<li><strong>(1) Kích hoạt:</strong> EventBridge Scheduler kích hoạt Lambda TriggerReminder.</li>
+<li><strong>(2) Truy vấn Data:</strong> Lambda truy vấn DynamoDB hoặc NeonDB để lấy danh sách người dùng đã đăng ký.</li>
+<li><strong>(3) Phân phối:</strong> Lambda tạo nội dung và gửi email thông qua Amazon SES.</li>
+</ul>
+<h4 id="3-luồng-triển-khai-devops">3. Luồng triển khai (DevOps)</h4>
+<ul>
+<li><strong>(1) Code Commit:</strong> Developer đẩy code lên GitHub.</li>
+<li><strong>(2) Build &amp; Deploy:</strong> GitHub Actions kích hoạt quá trình Build, Test và sử dụng CloudFormation sinh ra từ Serverless Framework để triển khai các hàm Lambda, API Gateway và các tài nguyên khác lên AWS.</li>
+</ul>
 <h2 id="5-mốc-thời-gian--các-cột-mốc">5. Mốc thời gian &amp; Các cột mốc</h2>
-<p>Dự án SorcererXStreme sẽ được thực hiện trong <strong>khoảng thời gian phát triển tập trung 9 tuần</strong> theo mô hình Agile-Iterative để nhanh chóng cung cấp một MVP với các tính năng chính như <strong>RAG</strong> và <strong>hệ thống người dùng VIP</strong>.</p>
+<p>Dự án SorcererXStreme sẽ được thực hiện trong khoảng thời gian phát triển tập trung 9 tuần theo mô hình Agile-Iterative để nhanh chóng cung cấp một MVP với các tính năng chính.</p>
 <h3 id="mốc-thời-gian-dự-án">Mốc thời gian Dự án</h3>
 <table>
   <thead>
@@ -725,28 +481,28 @@
       <tr>
           <td style="text-align: left"><strong>Iter 3: Thiết kế lại &amp; Nguyên mẫu RAG</strong></td>
           <td style="text-align: left">3 Tuần</td>
-          <td style="text-align: left">1 – 2 <strong>–</strong> 3</td>
-          <td style="text-align: left"><strong>Thiết kế Nền tảng &amp; Tài liệu</strong></td>
-          <td style="text-align: left">- <strong>SRS v2</strong> và <strong>SDS v2, Đề án</strong> được hoàn thiện.<br> - <strong>Sơ đồ Kiến trúc AWS</strong> kèm Ước tính Chi phí đã sẵn sàng. <br> - Dữ liệu RAG được thu thập và pipeline ban đầu được thiết kế.</td>
+          <td style="text-align: left">1 – 2 – 3</td>
+          <td style="text-align: left">Thiết kế Nền tảng &amp; Tài liệu</td>
+          <td style="text-align: left">- SRS v2 và SDS v2, Đề án được hoàn thiện.<br> - Sơ đồ kiến trúc AWS và bảng ước tính chi phí. <br> - Dữ liệu RAG được thu thập và pipeline ban đầu được thiết kế.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Iter 4: Vai trò &amp; Hệ thống VIP</strong></td>
           <td style="text-align: left">3 Tuần</td>
           <td style="text-align: left">4 – 5 – 6</td>
-          <td style="text-align: left"><strong>Triển khai Logic Cốt lõi &amp; Ủy quyền</strong></td>
-          <td style="text-align: left">- <strong>AWS Cognito</strong> được tích hợp để xác thực người dùng. <br> - Logic vai trò <strong>Khách/Miễn phí/VIP</strong> đầy đủ được triển khai và có thể kiểm thử. <br> - Corpus dữ liệu RAG được xây dựng trên S3.</td>
+          <td style="text-align: left">Triển khai Logic Cốt lõi &amp; Ủy quyền</td>
+          <td style="text-align: left">- AWS Cognito được tích hợp để xác thực người dùng. <br> - Logic vai trò Guest/Miễn phí/VIP đầy đủ được triển khai và có thể kiểm thử. <br> - Corpus dữ liệu RAG được xây dựng trên S3.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Iter 5: Triển khai AWS &amp; QA</strong></td>
           <td style="text-align: left">3 Tuần</td>
           <td style="text-align: left">7 – 8 – 9</td>
-          <td style="text-align: left"><strong>Triển khai Đám mây &amp; Ổn định</strong></td>
-          <td style="text-align: left">- Hệ thống chạy <strong>ổn định trên AWS</strong>. <br> - Hoàn thành kiểm thử đầu cuối đầy đủ. <strong>AWS Cost and Performance Sheet</strong> được hoàn thiện. <br> - Sẵn sàng cho Phát hành Beta.</td>
+          <td style="text-align: left">Triển khai Đám mây &amp; Ổn định</td>
+          <td style="text-align: left">- Hệ thống chạy ổn định trên AWS. <br> - Hoàn thành kiểm thử đầu cuối đầy đủ. AWS Cost and Performance Sheet được hoàn thiện. <br> - Sẵn sàng cho môi trường thực thi.</td>
       </tr>
   </tbody>
 </table>
 <h2 id="6-ước-tính-ngân-sách">6. Ước tính ngân sách</h2>
-<p>Dự án được chúng tôi giả định mức sử dụng thấp cho môi trường Demo và MVP (khoảng 5.000 yêu cầu/tháng).</p>
+<p>Dự án được chúng tôi giả định mức sử dụng thấp cho môi trường Demo (khoảng 5.000 yêu cầu/tháng).</p>
 <h3 id="chi-phí-cơ-sở-hạ-tầng">Chi phí Cơ sở Hạ tầng</h3>
 <table>
   <thead>
@@ -767,20 +523,20 @@
       <tr>
           <td style="text-align: center">1</td>
           <td style="text-align: left"><strong>AWS Lambda</strong></td>
-          <td style="text-align: left">Backend Logic (RAG, Compute)</td>
-          <td style="text-align: center">$0.22</td>
+          <td style="text-align: left">Xử lí Backend Logic (RAG, Compute)</td>
+          <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
           <td style="text-align: center">2</td>
           <td style="text-align: left"><strong>Amazon API Gateway</strong></td>
           <td style="text-align: left">Synchronous Request Gateway</td>
-          <td style="text-align: center">$0.03</td>
+          <td style="text-align: center">$0.025</td>
       </tr>
       <tr>
           <td style="text-align: center">3</td>
-          <td style="text-align: left"><strong>AWS App Runner</strong></td>
+          <td style="text-align: left"><strong>AWS Amplify</strong></td>
           <td style="text-align: left">Host Frontend (Next.js)</td>
-          <td style="text-align: center">$10.20</td>
+          <td style="text-align: center">$2.59</td>
       </tr>
       <tr>
           <td style="text-align: center"><strong>II. DATA &amp; STORAGE</strong></td>
@@ -790,21 +546,15 @@
       </tr>
       <tr>
           <td style="text-align: center">4</td>
-          <td style="text-align: left"><strong>RDS for PostgreSQL</strong></td>
-          <td style="text-align: left">Relational Data/Profiles</td>
-          <td style="text-align: center">$37.14</td>
+          <td style="text-align: left"><strong>Amazon DynamoDB</strong></td>
+          <td style="text-align: left">Chat History/Rate Limiting</td>
+          <td style="text-align: center">$0.89</td>
       </tr>
       <tr>
           <td style="text-align: center">5</td>
-          <td style="text-align: left"><strong>Amazon DynamoDB</strong></td>
-          <td style="text-align: left">Chat History/Rate Limiting</td>
-          <td style="text-align: center">$0.29</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">6</td>
           <td style="text-align: left"><strong>Amazon S3</strong></td>
           <td style="text-align: left">RAG Knowledge Base/Assets</td>
-          <td style="text-align: center">$0.88</td>
+          <td style="text-align: center">$0.03</td>
       </tr>
       <tr>
           <td style="text-align: center"><strong>III. AI &amp; SECURITY</strong></td>
@@ -813,22 +563,22 @@
           <td style="text-align: center"></td>
       </tr>
       <tr>
-          <td style="text-align: center">7</td>
+          <td style="text-align: center">6</td>
           <td style="text-align: left"><strong>Amazon Bedrock</strong></td>
           <td style="text-align: left">Embedding &amp; LLM/Content Generation</td>
-          <td style="text-align: center">$2.45</td>
+          <td style="text-align: center">$2.65</td>
       </tr>
       <tr>
-          <td style="text-align: center">8</td>
+          <td style="text-align: center">7</td>
           <td style="text-align: left"><strong>Amazon Cognito</strong></td>
-          <td style="text-align: left">Authentication/User Roles (MAUs)</td>
+          <td style="text-align: left">Authentication/User Roles</td>
           <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
-          <td style="text-align: center">9</td>
-          <td style="text-align: left"><strong>Secrets Manager</strong></td>
-          <td style="text-align: left">Store Master Keys (Fixed Cost)</td>
-          <td style="text-align: center">$2.15</td>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left"><strong>Parameter Store</strong></td>
+          <td style="text-align: left">Store Master Keys</td>
+          <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
           <td style="text-align: center"><strong>IV. ASYNC &amp; MONITORING</strong></td>
@@ -837,86 +587,39 @@
           <td style="text-align: center"></td>
       </tr>
       <tr>
-          <td style="text-align: center">10</td>
+          <td style="text-align: center">9</td>
           <td style="text-align: left"><strong>EventBridge Scheduler</strong></td>
           <td style="text-align: left">Daily Horoscope Trigger</td>
           <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left"><strong>Amazon SES</strong></td>
+          <td style="text-align: left">Email Delivery</td>
+          <td style="text-align: center">$0.48</td>
+      </tr>
+      <tr>
           <td style="text-align: center">11</td>
-          <td style="text-align: left"><strong>Amazon SQS</strong></td>
-          <td style="text-align: left">Notification Queue</td>
-          <td style="text-align: center">$0.08</td>
+          <td style="text-align: left"><strong>Amazon CloudWatch</strong></td>
+          <td style="text-align: left">Logs/Metrics/Alarms</td>
+          <td style="text-align: center">$2.4</td>
       </tr>
       <tr>
           <td style="text-align: center">12</td>
-          <td style="text-align: left"><strong>Amazon SES</strong></td>
-          <td style="text-align: left">Email Delivery</td>
-          <td style="text-align: center">$0.24</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">13</td>
-          <td style="text-align: left"><strong>Amazon CloudWatch</strong></td>
-          <td style="text-align: left">Logs/Metrics/Alarms</td>
-          <td style="text-align: center">$4.46</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">14</td>
           <td style="text-align: left"><strong>Amazon SNS</strong></td>
           <td style="text-align: left">Alert Notifications</td>
           <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
-          <td style="text-align: center"><strong>V. NETWORK &amp; DELIVERY</strong></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">15</td>
-          <td style="text-align: left"><strong>Amazon Route 53</strong></td>
-          <td style="text-align: left">DNS/Domain Management</td>
-          <td style="text-align: center">$0.50</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">16</td>
-          <td style="text-align: left"><strong>Amazon CloudFront</strong></td>
-          <td style="text-align: left">CDN/Content Distribution/Low Latency</td>
-          <td style="text-align: center">$0.24</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">17</td>
-          <td style="text-align: left"><strong>AWS WAF</strong></td>
-          <td style="text-align: left">Web Application Firewall (Layer 7 Protection)</td>
-          <td style="text-align: center">$9.03</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>VI. DEVOPS &amp; INFRASTRUCTURE</strong></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">19</td>
-          <td style="text-align: left"><strong>AWS CodePipeline</strong></td>
-          <td style="text-align: left">CI/CD (Automated Deployment)</td>
-          <td style="text-align: center">$1.00</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">20</td>
-          <td style="text-align: left"><strong>AWS CloudFormation</strong></td>
-          <td style="text-align: left">Infra-as-Code (Resource Management)</td>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left"><strong>Cloudformation</strong></td>
+          <td style="text-align: left">Deploy for dev</td>
           <td style="text-align: center">$0.00</td>
       </tr>
   </tbody>
 </table>
-<p>Link ước tính ngân sách:</p>
-<ul>
-<li><a href="https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing">Compute + Monitor Layer + AI</a></li>
-<li><a href="https://drive.google.com/file/d/1ZqoGQjxSpZVKVjAOMy3Ps37iUDCm95k7/view?usp=drive_link">Bedrock</a></li>
-<li><a href="https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing">Network + CICD</a></li>
-</ul>
-<h3 id="tổng-chi-phí-dự-án-6773month">Tổng Chi Phí Dự Án: $67.73/month</h3>
+<p>Link: <a href="https://drive.google.com/file/d/1Cy0ivN1wIOJ8DthIOE4cYYFG1BzESt5m/view?usp=sharing">Bảng uớc tính chi phí</a></p>
+<h3 id="tổng-chi-phí-dự-án-906month">Tổng Chi Phí Dự Án: $9.06/month</h3>
 <h2 id="7-đánh-giá-rủi-ro">7. Đánh giá rủi ro</h2>
 <table>
   <thead>
@@ -932,13 +635,13 @@
           <td style="text-align: left"><strong>Ảo giác LLM</strong></td>
           <td style="text-align: left">Cao</td>
           <td style="text-align: left">Trung bình</td>
-          <td style="text-align: left">Triển khai <strong>Bộ kiểm tra Thực tế RAG (RAG Fact Checker)</strong>; sử dụng LLM chất lượng cao; căn cứ câu trả lời vào các nguồn đã được xác minh.</td>
+          <td style="text-align: left">Triển khai Bộ kiểm tra Thực tế RAG (RAG Fact Checker); sử dụng LLM chất lượng cao; căn cứ câu trả lời vào các nguồn đã được xác minh.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Vượt chi phí LLM</strong></td>
           <td style="text-align: left">Cao</td>
           <td style="text-align: left">Trung bình</td>
-          <td style="text-align: left">Thiết lập <strong>Cảnh báo Ngân sách AWS (AWS Budget Alerts)</strong>; triển khai <strong>kiểm soát token</strong>; sử dụng mô hình LLM phân tầng (Miễn phí so với VIP).</td>
+          <td style="text-align: left">Thiết lập Cảnh báo Ngân sách AWS (AWS Budget Alerts); triển khai kiểm soát token; sử dụng mô hình LLM phân tầng (Miễn phí so với VIP).</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Độ trễ Truy xuất RAG</strong></td>
@@ -950,7 +653,7 @@
           <td style="text-align: left"><strong>Vi phạm Bảo mật</strong></td>
           <td style="text-align: left">Cao</td>
           <td style="text-align: left">Thấp</td>
-          <td style="text-align: left">Sử dụng <strong>Cognito</strong> để xác thực và <strong>Secret Manager</strong> để xử lý thông tin xác thực.</td>
+          <td style="text-align: left">Sử dụng Cognito để xác thực và Secret Manager để xử lý thông tin xác thực.</td>
       </tr>
   </tbody>
 </table>
@@ -963,8 +666,8 @@
 <h3 id="giá-trị-dài-hạn">Giá trị dài hạn</h3>
 <ul>
 <li><strong>Khả năng lợi nhuận:</strong> Mô hình đăng ký VIP tạo ra một con đường rõ ràng, ổn định để tạo doanh thu.</li>
-<li><strong>Nền tảng dữ liệu:</strong> Một cơ sở tri thức huyền học độc quyền, đã được xác minh (corpus RAG) được thiết lập như một tài sản có giá trị, có thể tái sử dụng.</li>
-<li><strong>Mở rộng tương lai:</strong> Kiến trúc AWS linh hoạt (Lambda, Bedrock) dễ dàng nâng cấp cho các ứng dụng di động hoặc tính năng trò chuyện bằng giọng nói.</li>
+<li><strong>Nền tảng dữ liệu:</strong> Một cơ sở tri thức huyền học độc quyền, đã được xác minh và được thiết lập như một tài sản có giá trị, có thể tái sử dụng.</li>
+<li><strong>Mở rộng tương lai:</strong> Kiến trúc AWS linh hoạt dễ dàng nâng cấp cho các ứng dụng di động hoặc tính năng trò chuyện bằng giọng nói.</li>
 </ul>
 
 
@@ -1038,19 +741,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1762847912"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1762847912"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1762847912"></script>
-    <script src="../../js/jquery.sticky.js?1762847912"></script>
-    <script src="../../js/featherlight.min.js?1762847912"></script>
-    <script src="../../js/highlight.pack.js?1762847912"></script>
+    <script src="../../js/clipboard.min.js?1765081944"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1765081944"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1765081944"></script>
+    <script src="../../js/jquery.sticky.js?1765081944"></script>
+    <script src="../../js/featherlight.min.js?1765081944"></script>
+    <script src="../../js/highlight.pack.js?1765081944"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1762847912"></script>
-    <script src="../../js/learn.js?1762847912"></script>
-    <script src="../../js/hugo-learn.js?1762847912"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1765081944"></script>
+    <script src="../../js/learn.js?1765081944"></script>
+    <script src="../../js/hugo-learn.js?1765081944"></script>
 
-    <link href="../../mermaid/mermaid.css?1762847912" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1762847912"></script>
+    <link href="../../mermaid/mermaid.css?1765081944" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1765081944"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

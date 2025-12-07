@@ -7,13 +7,13 @@ chapter: false
 
 ### Thông Tin Dự Án
 
-| Trường | Chi tiết |
+| Thông tin | Chi tiết |
 | :--- | :--- |
-| **Tên Nhóm** | **TEEJ_SorcererXStreme** |
-| **Trường Đại học** | Đại học FPT - Hồ Chí Minh Campus|
-| **Công ty Thực tập** | Công ty TNHH Amazon Web Services Việt Nam |
-| **Vị trí Thực tập** | Thực tập sinh chương trình FCJ Workforce  |
-| **Thời gian Thực tập** | Từ ngày 08/09/2025 đến 24/12/2025 |
+| **Tên nhóm** | TEEJ_SorcererXStreme |
+| **Trường** | Đại học FPT - Hồ Chí Minh Campus|
+| **Công ty thực tập** | Công ty TNHH Amazon Web Services Việt Nam |
+| **Vị trí thực tập** | Thực tập sinh chương trình FCJ Workforce  |
+| **Thời gian thực tập** | Từ ngày 08/09/2025 đến 24/12/2025 |
 
 
 ### Thành Viên Nhóm

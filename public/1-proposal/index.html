@@ -15,21 +15,21 @@
     <title>Proposal :: Proposal Report</title>
 
     
-    <link href="../css/nucleus.css?1762847912" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1762847912" rel="stylesheet">
-    <link href="../css/hybrid.css?1762847912" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1762847912" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1762847912" rel="stylesheet">
-    <link href="../css/auto-complete.css?1762847912" rel="stylesheet">
-    <link href="../css/atom-one-dark-reasonable.css?1762847912" rel="stylesheet">
-    <link href="../css/theme.css?1762847912" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1762847912" rel="stylesheet">
+    <link href="../css/nucleus.css?1765082047" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1765082047" rel="stylesheet">
+    <link href="../css/hybrid.css?1765082047" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1765082047" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1765082047" rel="stylesheet">
+    <link href="../css/auto-complete.css?1765082047" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1765082047" rel="stylesheet">
+    <link href="../css/theme.css?1765082047" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1765082047" rel="stylesheet">
     
-    <link href="../css/theme-workshop.css?1762847912" rel="stylesheet">
+    <link href="../css/theme-workshop.css?1765082047" rel="stylesheet">
     
     
 
-    <script src="../js/jquery-3.3.1.min.js?1762847912"></script>
+    <script src="../js/jquery-3.3.1.min.js?1765082047"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1762847912"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1762847912"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1765082047"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1765082047"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/repo-name\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1762847912"></script>
+<script type="text/javascript" src="../js/search.js?1765082047"></script>
  
   </div>
 
@@ -287,15 +287,12 @@
       </ul>
     </li>
     <li><a href="#3-solution-architecture">3. Solution Architecture</a></li>
-    <li><a href="#system-architecture-sorcererxstreme">System Architecture: SorcererXStreme</a>
+    <li><a href="#services-used">Services Used</a></li>
+    <li><a href="#workflow">Workflow</a>
       <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#4-technical-implementation">4. Technical Implementation</a>
-      <ul>
-        <li><a href="#implementation-phases">Implementation Phases</a></li>
-        <li><a href="#technical-requirements--deliverables-by-iteration">Technical Requirements &amp; Deliverables by Iteration</a></li>
+        <li><a href="#1-real-time-api-interaction-flow-synchronous-flow">1. Real-time API Interaction Flow (Synchronous Flow)</a></li>
+        <li><a href="#2-automated-notification-flow-asynchronous-flow">2. Automated Notification Flow (Asynchronous Flow)</a></li>
+        <li><a href="#3-deployment-flow-devops">3. Deployment Flow (DevOps)</a></li>
       </ul>
     </li>
     <li><a href="#5-timeline--milestones">5. Timeline &amp; Milestones</a>
@@ -303,10 +300,10 @@
         <li><a href="#project-timeline">Project Timeline</a></li>
       </ul>
     </li>
-    <li><a href="#6-budget-estimation">6. Budget Estimation</a>
+    <li><a href="#6-budget-estimate">6. Budget Estimate</a>
       <ul>
         <li><a href="#infrastructure-costs">Infrastructure Costs</a></li>
-        <li><a href="#total-project-cost-6773month">Total Project Cost: $67.73/month</a></li>
+        <li><a href="#total-project-cost-906month">Total Project Cost: $9.06/month</a></li>
       </ul>
     </li>
     <li><a href="#7-risk-assessment">7. Risk Assessment</a>
@@ -346,7 +343,7 @@
 
 	<h1 id="sorcererxstreme-an-ai-powered-metaphysical-guidance-platform">SorcererXStreme: An AI-Powered Metaphysical Guidance Platform</h1>
 <h2 id="1-executive-summary">1. Executive Summary</h2>
-<p>The SorcererXStreme AI platform is a unified AI-driven spiritual guidance system designed to help users explore self-discovery through various Eastern and Western esoteric disciplines, including <strong>Astrology, Tarot, Numerology, and Eastern Horoscopes</strong>. The foundation of the system is the <strong>Retrieval-Augmented Generation (RAG) Core</strong>, which ensures all output is grounded in curated esoteric knowledge sources.</p>
+<p>The SorcererXStreme AI platform is a unified AI-driven spiritual guidance system designed to help users explore self-discovery through various Eastern and Western esoteric disciplines, including Astrology, Tarot, Numerology, and Eastern Horoscopes. The foundation of the system is the Retrieval-Augmented Generation (RAG) Core, which ensures all output is grounded in curated esoteric knowledge sources.</p>
 <h2 id="2-problem-statement">2. Problem Statement</h2>
 <h3 id="whats-the-problem">What’s the Problem?</h3>
 <p>Users currently face several limitations when exploring spiritual and esoteric knowledge:</p>
@@ -398,358 +395,121 @@
 </table>
 <h2 id="3-solution-architecture">3. Solution Architecture</h2>
 <p>The SorcererXStreme AI platform utilizes a robust, hybrid serverless architecture on AWS, meticulously designed to handle real-time user interactions, scheduled tasks, and autonomous monitoring.</p>
-<p><img src="../images/High_Level_System_Architecture.drawio.png" alt="Architecture Diagram"></p>
-<h2 id="system-architecture-sorcererxstreme">System Architecture: SorcererXStreme</h2>
-<p>This architecture is built on AWS and organized into three distinct, interconnected functional flows: <strong>Real-time API Interaction</strong>, <strong>Asynchronous Notification</strong>, and <strong>DevOps (CI/CD)</strong>.</p>
-<h4 id="summary-of-aws-services">Summary of AWS Services</h4>
+<p><img src="../images/High_Level_System_Architecture.drawio%282%29.png" alt="Architecture Diagram"></p>
+<h2 id="services-used">Services Used</h2>
 <table>
   <thead>
       <tr>
           <th style="text-align: left">Layer</th>
-          <th style="text-align: left">AWS Service</th>
-          <th style="text-align: left">Primary Role</th>
+          <th style="text-align: left">Service</th>
+          <th style="text-align: left">Role and Relationship</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><strong>Networking &amp; Edge</strong></td>
-          <td style="text-align: left">Route 53, CloudFront, WAF</td>
-          <td style="text-align: left">DNS Resolution, Caching/Acceleration, Security Traffic Filtering.</td>
+          <td style="text-align: left"><strong>Edge &amp; Auth</strong></td>
+          <td style="text-align: left">Amplify, Cognito</td>
+          <td style="text-align: left">- Amplify handles frontend hosting and routing.<br>- Cognito manages authentication.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Security &amp; Identity</strong></td>
-          <td style="text-align: left">Cognito, Secrets Manager</td>
-          <td style="text-align: left">User Authentication Management, Securely storing API keys/sensitive credentials.</td>
+          <td style="text-align: left"><strong>API &amp; Routing</strong></td>
+          <td style="text-align: left">API Gateway</td>
+          <td style="text-align: left">- The primary endpoint for all Backend Lambdas and AI Lambdas.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Compute &amp; API</strong></td>
-          <td style="text-align: left">API Gateway, AWS Lambda, App Runner</td>
-          <td style="text-align: left">Synchronous Entry Point, Serverless Business Logic Processing, Hosting Frontend/Containers.</td>
+          <td style="text-align: left"><strong>Compute Layer</strong></td>
+          <td style="text-align: left">AWS Lambda</td>
+          <td style="text-align: left">- Processes Business Logic and Async/Sync flows.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>AI/ML Layer</strong></td>
-          <td style="text-align: left">Amazon Bedrock</td>
-          <td style="text-align: left">Provides <strong>Embedding</strong> models (RAG Retrieval) and <strong>LLMs</strong> (RAG Generation) for grounded content creation.</td>
+          <td style="text-align: left"><strong>Data &amp; Integration</strong></td>
+          <td style="text-align: left">DynamoDB, Parameter Store, NeonDB, Pinecone</td>
+          <td style="text-align: left">- NeonDB (external PostgreSQL) is the Primary DB.<br>- DynamoDB for history/quick access.<br>- Parameter Store for secure storage.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Data &amp; Storage</strong></td>
-          <td style="text-align: left">RDS for PostgreSQL, DynamoDB, S3</td>
-          <td style="text-align: left"><strong>RDS</strong> (Vector Store, User Profiles), <strong>DynamoDB</strong> (Chat History/Fast Access Data), <strong>S3</strong> (Static Assets/RAG Knowledge Base).</td>
+          <td style="text-align: left"><strong>AI/ML</strong></td>
+          <td style="text-align: left">Bedrock, Lambda (Embeddings), S3</td>
+          <td style="text-align: left">- Bedrock (LLM Model).<br>- S3 stores raw RAG documents.<br>- Lambda Embeddings creates vectors.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Async &amp; Events</strong></td>
-          <td style="text-align: left">EventBridge Scheduler, SQS, SES</td>
-          <td style="text-align: left">Schedule-based triggering, Message Buffering, Email Sending.</td>
+          <td style="text-align: left"><strong>Async &amp; Monitoring</strong></td>
+          <td style="text-align: left">EventBridge, SQS, SES, CloudWatch, SNS</td>
+          <td style="text-align: left">- Handles Asynchronous flows and Independent Monitoring activities.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Monitoring &amp; DevOps</strong></td>
-          <td style="text-align: left">CloudWatch, SNS, CodePipeline/CodeBuild</td>
-          <td style="text-align: left">Collecting Logs/Metrics, Urgent Alerting, Managing Automated CI/CD pipeline.</td>
+          <td style="text-align: left"><strong>DevOps</strong></td>
+          <td style="text-align: left">GitHub Actions, CloudFormation</td>
+          <td style="text-align: left">- GitHub Actions handles Build and Test process, and CloudFormation generated by the Serverless Framework is the main deployment tool.</td>
       </tr>
   </tbody>
 </table>
-<h4 id="flow-1-real-time-api-interaction-chatrag-inference">Flow 1: Real-time API Interaction (Chat/RAG Inference)</h4>
-<p>This is the synchronous processing flow where users send a question and receive a generated answer from the LLM (using Retrieval-Augmented Generation - RAG).</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">#</th>
-          <th style="text-align: left">Activity</th>
-          <th style="text-align: left">AWS Services</th>
-          <th style="text-align: left">Detail &amp; Role</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><strong>1</strong></td>
-          <td style="text-align: left"><strong>Ingress &amp; Edge Filtering</strong></td>
-          <td style="text-align: left"><strong>User (1)</strong> → <strong>Route 53</strong> → <strong>CloudFront</strong> → <strong>WAF</strong></td>
-          <td style="text-align: left">Request goes through <strong>DNS resolution</strong> (Route 53), is <strong>accelerated &amp; cached</strong> (CloudFront), and undergoes <strong>security checks</strong> (WAF) before entering the region.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>2</strong></td>
-          <td style="text-align: left"><strong>Gateway &amp; Authentication</strong></td>
-          <td style="text-align: left"><strong>WAF</strong> → <strong>API Gateway (4)</strong> → <strong>Cognito (3)</strong></td>
-          <td style="text-align: left">Valid requests are <strong>routed</strong>. <strong>Cognito</strong> authenticates the user token.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>3</strong></td>
-          <td style="text-align: left"><strong>Orchestration</strong></td>
-          <td style="text-align: left"><strong>API Gateway (4)</strong> → <strong>Lambda (UserAPI) (5)</strong></td>
-          <td style="text-align: left"><code>UserAPI</code> acts as the <strong>orchestrator</strong>, receiving the request, validating, and forwarding it.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>4</strong></td>
-          <td style="text-align: left"><strong>Vector Embedding (RAG S1)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>Bedrock (Embedding Model) (5)</strong></td>
-          <td style="text-align: left">Converts the raw question into a <strong>query_vector</strong> (semantic coordinates) via Bedrock (using NAT Gateway).</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>5</strong></td>
-          <td style="text-align: left"><strong>Context Retrieval (RAG S2)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>RDS (PostgreSQL) (5)</strong></td>
-          <td style="text-align: left">Sends the <code>query_vector</code> to RDS (using a vector extension) to perform <strong>Hybrid Search</strong> and retrieve the most relevant <strong>context chunks</strong>.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>6</strong></td>
-          <td style="text-align: left"><strong>Generation (RAG S3)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>Bedrock (LLM) (5)</strong></td>
-          <td style="text-align: left">Sends the <strong>Super Prompt</strong> (Context + Original Question) to the <strong>Bedrock LLM</strong> to generate the final answer.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>7</strong></td>
-          <td style="text-align: left"><strong>History Logging (Background)</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>DynamoDB (5)</strong></td>
-          <td style="text-align: left">Logs chat/interpretation history to DynamoDB (via Endpoint, without waiting for a response).</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>8</strong></td>
-          <td style="text-align: left"><strong>Completion</strong></td>
-          <td style="text-align: left"><strong>Lambda (Chatbot) (5)</strong> → <strong>API Gateway (4)</strong> → <strong>User (1)</strong></td>
-          <td style="text-align: left">Returns the final answer to the user.</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="flow-2-daily-horoscope-notification-asynchronous">Flow 2: Daily Horoscope Notification (Asynchronous)</h4>
-<p>This flow is triggered on a schedule (Scheduler) and uses SQS for message buffering and asynchronous processing.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">#</th>
-          <th style="text-align: left">Activity</th>
-          <th style="text-align: left">AWS Services</th>
-          <th style="text-align: left">Detail &amp; Role</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><strong>1</strong></td>
-          <td style="text-align: left"><strong>Schedule Trigger</strong></td>
-          <td style="text-align: left"><strong>EventBridge Scheduler (6)</strong> → <strong>Lambda (TriggerReminder)</strong></td>
-          <td style="text-align: left">Initiates the flow at a pre-defined time.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>2</strong></td>
-          <td style="text-align: left"><strong>Fan-Out</strong></td>
-          <td style="text-align: left"><strong>Lambda</strong> → <strong>RDS</strong> → <strong>SQS (7)</strong></td>
-          <td style="text-align: left">Retrieves the list of subscribed users from RDS and pushes individual messages into the <strong>SQS Reminder Queue</strong> for decoupled processing.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>3</strong></td>
-          <td style="text-align: left"><strong>Process &amp; Deliver</strong></td>
-          <td style="text-align: left"><strong>SQS (8)</strong> → <strong>Lambda (SendReminder)</strong> → <strong>SES</strong></td>
-          <td style="text-align: left"><code>SendReminderLambda</code> is triggered by SQS, creates the email content, and sends <strong>notification emails</strong> to users via Amazon SES.</td>
-      </tr>
-  </tbody>
-</table>
-<h4 id="flow-3-devops-cicd">Flow 3: DevOps (CI/CD)</h4>
-<p>The automated process for deploying new source code from the repository to the AWS environment.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">#</th>
-          <th style="text-align: left">Activity</th>
-          <th style="text-align: left">AWS Services</th>
-          <th style="text-align: left">Detail &amp; Role</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center"><strong>1</strong></td>
-          <td style="text-align: left"><strong>Source &amp; Activation</strong></td>
-          <td style="text-align: left"><strong>Developer (10)</strong> → <strong>GitHub (10)</strong> → <strong>CodePipeline (10)</strong></td>
-          <td style="text-align: left">A <code>git push</code> activates the CodePipeline via a webhook.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>2</strong></td>
-          <td style="text-align: left"><strong>Build &amp; Test</strong></td>
-          <td style="text-align: left"><strong>CodePipeline (10)</strong> → <strong>CodeBuild (10)</strong></td>
-          <td style="text-align: left">Downloads code, installs dependencies, runs unit tests, and <strong>packages (Builds)</strong> the artifacts.</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>3</strong></td>
-          <td style="text-align: left"><strong>Deployment</strong></td>
-          <td style="text-align: left"><strong>CodeBuild</strong> → <strong>CloudFormation</strong></td>
-          <td style="text-align: left">Deploys the new version of Lambda functions and updates API Gateway and App Runner configuration.</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="4-technical-implementation">4. Technical Implementation</h2>
-<p>The SorcererXStreme project will follow an <strong>Agile-Iterative Development</strong> methodology, structured into a <strong>9-week roadmap</strong> comprising three main iterations (Iter 3, 4, and 5) after the initial planning phase.</p>
-<h3 id="implementation-phases">Implementation Phases</h3>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Phase</th>
-          <th style="text-align: left">Duration</th>
-          <th style="text-align: left">Focus Area</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>I. Requirement Analysis &amp; Documentation (Iter 3)</strong></td>
-          <td style="text-align: left">3 Week</td>
-          <td style="text-align: left">Finalize SRS (v2) and SDS (v2) documents, proposal, setting the foundation for expanded roles and RAG.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>II. Design &amp; Expansion (Iter 4)</strong></td>
-          <td style="text-align: left">3 Week</td>
-          <td style="text-align: left">Core development of the RAG pipeline, implementation of the User Role system (Guest/Free/VIP), and configuration of the core AWS infrastructure.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>III. AWS Integration &amp; Testing (Iter 5)</strong></td>
-          <td style="text-align: left">3 Week</td>
-          <td style="text-align: left">Full deployment on AWS, end-to-end testing, and performance optimization.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>IV. Evaluation &amp; Handoff</strong></td>
-          <td style="text-align: left">Ongoing</td>
-          <td style="text-align: left">Optimization, performance reporting, and final beta release preparation.</td>
-      </tr>
-  </tbody>
-</table>
-<h3 id="technical-requirements--deliverables-by-iteration">Technical Requirements &amp; Deliverables by Iteration</h3>
-<p><strong>Iteration 3 – RAG Integration &amp; System Redesign (Weeks 1–2–3)</strong></p>
-<p><strong>Goal:</strong> Re-analyze requirements, finalize the AWS architecture, define user experience flows, and prototype the RAG design.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Category</th>
-          <th style="text-align: left">Key Tasks</th>
-          <th style="text-align: left">Responsibility</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>System Documentation</strong></td>
-          <td style="text-align: left">Review and update existing architecture. Write <strong>SRS v2</strong> (Functional &amp; Non-functional) and <strong>SDS v2</strong>.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>UX &amp; Role Flow</strong></td>
-          <td style="text-align: left">Design detailed user flows for <strong>Guest/Free/VIP</strong> transitions. Define functional limits per role. Propose <strong>VIP upgrade UI</strong>.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>RAG Architecture</strong></td>
-          <td style="text-align: left">Propose the RAG mechanism (data source, pipeline, embedding storage). Design RAG prototype pipeline: text -&gt; embedding -&gt; index. <strong>Data collection</strong> (Tarot, Horoscope, Numerology).</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>AWS Infrastructure</strong></td>
-          <td style="text-align: left">Finalize <strong>AWS Architecture Diagram</strong>. Calculate <strong>Cost Estimation</strong> focusing on Free-tier and Serverless options.</td>
-          <td style="text-align: left">SE, AI</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Deliverables:</strong> Completed SRS v2, SDS v2, AWS Architecture Diagram with Cost Estimation, UX/Role Flow documentation, and RAG prototype design.</p>
-<p><strong>Iteration 4 – User Roles &amp; Production RAG Pipeline (Weeks 4–5–6)</strong></p>
-<p><strong>Goal:</strong> Implement the user authorization system and integrate the foundational RAG data corpus.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Category</th>
-          <th style="text-align: left">Key Tasks</th>
-          <th style="text-align: left">Responsibility</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>Authentication &amp; Roles</strong></td>
-          <td style="text-align: left">Design the user schema (guest, free, vip). Integrate <strong>AWS Cognito</strong> into the frontend. Define API access permissions based on user role.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>VIP Functionality</strong></td>
-          <td style="text-align: left">Implement logic for <strong>limiting chat counts, Tarot pulls,</strong> and detailed Astrology views. Deploy pricing model and upgrade screens.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>RAG Production Prep</strong></td>
-          <td style="text-align: left">Cleanse and standardize data. Implement context retrieval by topic (love, career, zodiac). Build and store the initial <strong>Corpus on S3</strong>.</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>AI Optimization</strong></td>
-          <td style="text-align: left">Fine-tune embedding model and chunk size. Write a script for <strong>automated data updates</strong> (S3 -&gt; index).</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Deliverables:</strong> Fully functioning user role system (Guest/Free/VIP) integrated with Cognito. RAG mock API endpoints operational on local/dev environment, enabling testing of VIP access logic.</p>
-<p><strong>Iteration 5 – AWS Deployment &amp; Evaluation (Weeks 7 – 8 – 9)</strong></p>
-<p><strong>Goal:</strong> Complete full deployment on the cloud, perform comprehensive testing, and prepare for public release.</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Category</th>
-          <th style="text-align: left">Key Tasks</th>
-          <th style="text-align: left">Responsibility</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>AWS Infrastructure</strong></td>
-          <td style="text-align: left">Final configuration of <strong>App Runner + Lambda</strong>. Deploy <strong>DynamoDB, S3, Cognito</strong>. Create minimal <strong>IAM Policies</strong>.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Monitoring &amp; Logging</strong></td>
-          <td style="text-align: left">Set up <strong>CloudWatch</strong> for Lambda and Cognito logging. Create a dashboard to monitor usage and costs.</td>
-          <td style="text-align: left">SE</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>AI Model Tuning</strong></td>
-          <td style="text-align: left">Optimize <strong>LLM prompt</strong> and RAG pipeline. Implement <strong>LLM token control</strong> mechanisms for cost governance.</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Testing &amp; Evaluation</strong></td>
-          <td style="text-align: left">Write <strong>end-to-end test cases</strong>. Comprehensive testing of roles, VIP restrictions, and RAG accuracy. Report on AI accuracy (pre/post-RAG).</td>
-          <td style="text-align: left">AI</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Deliverables:</strong> Stable system running on the AWS infrastructure. Performance, cost, and testing reports (<strong>AWS Service Cost and Performance Sheet</strong>). Readiness for public Beta testing.</p>
+<h2 id="workflow">Workflow</h2>
+<h3 id="1-real-time-api-interaction-flow-synchronous-flow">1. Real-time API Interaction Flow (Synchronous Flow)</h3>
+<p>This flow handles direct chat and interpretation requests from the user.</p>
+<ul>
+<li><strong>(1) Request Reception:</strong> The User sends a request directly to the AWS Amplify Endpoint.</li>
+<li><strong>(2) Routing &amp; API:</strong> Amplify forwards the request to API Gateway. API Gateway authenticates the Cognito token and routes to the corresponding Lambda (<code>SyncUser</code>, <code>Chatbot</code>, etc.).</li>
+<li><strong>(3) Data Processing:</strong> Lambda accesses Parameter Store for secrets and retrieves data from NeonDB, DynamoDB.</li>
+<li><strong>(4) RAG and AI:</strong> The Chatbot Lambda executes the RAG flow:
+<ul>
+<li>Uses Bedrock (Embedding Model) to create a vector for the question.</li>
+<li>Queries Pinecone (Vector Database) using that vector.</li>
+<li>Sends the RAG context to Bedrock (LLM) to generate the answer.</li>
+</ul>
+</li>
+<li><strong>(5) Response:</strong> Lambda returns the result to API Gateway -&gt; Amplify -&gt; User.</li>
+</ul>
+<h3 id="2-automated-notification-flow-asynchronous-flow">2. Automated Notification Flow (Asynchronous Flow)</h3>
+<p>This flow is simplified and does not require RDS.</p>
+<ul>
+<li><strong>(1) Trigger:</strong> EventBridge Scheduler triggers the <code>TriggerReminder</code> Lambda.</li>
+<li><strong>(2) Data Query:</strong> Lambda queries DynamoDB or NeonDB to retrieve the list of subscribed users.</li>
+<li><strong>(3) Distribution:</strong> Lambda generates content and sends emails via Amazon SES.</li>
+</ul>
+<h3 id="3-deployment-flow-devops">3. Deployment Flow (DevOps)</h3>
+<ul>
+<li><strong>(1) Code Commit:</strong> Developer pushes code to GitHub.</li>
+<li><strong>(2) Build &amp; Deploy:</strong> GitHub Actions triggers the Build, Test process and uses CloudFormation generated by the Serverless Framework to deploy Lambdas, API Gateway, and other resources to AWS.</li>
+</ul>
 <h2 id="5-timeline--milestones">5. Timeline &amp; Milestones</h2>
-<p>The SorcererXStreme project will be executed over a concentrated <strong>9-week development period</strong> following the Agile-Iterative model.</p>
+<p>The SorcererXStreme project will be executed over a 9-week concentrated development period using an Agile-Iterative model to quickly deliver an MVP with key features.</p>
 <h3 id="project-timeline">Project Timeline</h3>
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Iteration</th>
-          <th style="text-align: left">Duration</th>
-          <th style="text-align: left">Weeks</th>
+          <th style="text-align: center">Iteration</th>
+          <th style="text-align: center">Duration</th>
+          <th style="text-align: center">Week</th>
           <th style="text-align: left">Primary Focus</th>
-          <th style="text-align: left">Key Deliverables (Milestones)</th>
+          <th style="text-align: left">Key Deliverables</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><strong>Iter 3: Redesign &amp; RAG Prototype</strong></td>
-          <td style="text-align: left">3 Weeks</td>
-          <td style="text-align: left">1 – 2 <strong>–</strong> 3</td>
-          <td style="text-align: left"><strong>Foundational Design &amp; Documentation</strong></td>
-          <td style="text-align: left"><strong>SRS v2</strong> and <strong>SDS v2, Proposal</strong> finalized. <strong>AWS Architecture Diagram</strong> with Cost Estimation ready. RAG data collected and initial pipeline designed.</td>
+          <td style="text-align: center"><strong>Iter 3: Redesign &amp; RAG Prototype</strong></td>
+          <td style="text-align: center">3 Weeks</td>
+          <td style="text-align: center">1 – 2 – 3</td>
+          <td style="text-align: left">Platform Design &amp; Documentation</td>
+          <td style="text-align: left">- SRS v2 and SDS v2, Proposal finalized.<br>- AWS Architecture Diagram and cost estimate sheet.<br>- RAG data collected and initial pipeline designed.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Iter 4: Roles &amp; VIP System</strong></td>
-          <td style="text-align: left">3 Weeks</td>
-          <td style="text-align: left">4 – 5 – 6</td>
-          <td style="text-align: left"><strong>Core Logic Implementation &amp; Authorization</strong></td>
-          <td style="text-align: left"><strong>AWS Cognito</strong> integrated for user authentication. Full <strong>Guest/Free/VIP role logic</strong> implemented and testable. RAG data corpus built on S3.</td>
+          <td style="text-align: center"><strong>Iter 4: Roles &amp; VIP System</strong></td>
+          <td style="text-align: center">3 Weeks</td>
+          <td style="text-align: center">4 – 5 – 6</td>
+          <td style="text-align: left">Core Logic &amp; Authorization Implementation</td>
+          <td style="text-align: left">- AWS Cognito integrated for user authentication.<br>- Full Guest/Free/VIP role logic implemented and testable.<br>- RAG data corpus built on S3.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><strong>Iter 5: AWS Deployment &amp; QA</strong></td>
-          <td style="text-align: left">3 Weeks</td>
-          <td style="text-align: left">7 – 8 – 9</td>
-          <td style="text-align: left"><strong>Cloud Deployment &amp; Stabilization</strong></td>
-          <td style="text-align: left">System running <strong>stably on AWS</strong> (Amplify, Lambda, DynamoDB). Full end-to-end testing completed. <strong>AWS Cost and Performance Sheet</strong> finalized. Readiness for Beta Launch.</td>
+          <td style="text-align: center"><strong>Iter 5: AWS Deployment &amp; QA</strong></td>
+          <td style="text-align: center">3 Weeks</td>
+          <td style="text-align: center">7 – 8 – 9</td>
+          <td style="text-align: left">Cloud Deployment &amp; Stabilization</td>
+          <td style="text-align: left">- System running stably on AWS.<br>- Full end-to-end testing completed. AWS Cost and Performance Sheet finalized.<br>- Ready for production environment.</td>
       </tr>
   </tbody>
 </table>
-<h2 id="6-budget-estimation">6. Budget Estimation</h2>
-<p>The project assume low usage for a non-production Demo and MVP environment (approx. 5,000 requests/month).</p>
+<h2 id="6-budget-estimate">6. Budget Estimate</h2>
+<p>The project is estimated based on low usage for a Demo environment (approx. 5,000 requests/month).</p>
 <h3 id="infrastructure-costs">Infrastructure Costs</h3>
 <table>
   <thead>
@@ -757,7 +517,7 @@
           <th style="text-align: center">Layer</th>
           <th style="text-align: left">AWS Service</th>
           <th style="text-align: left">Purpose</th>
-          <th style="text-align: center">Estimated Monthly Cost (USD) - Paid</th>
+          <th style="text-align: center">Cost</th>
       </tr>
   </thead>
   <tbody>
@@ -770,20 +530,20 @@
       <tr>
           <td style="text-align: center">1</td>
           <td style="text-align: left"><strong>AWS Lambda</strong></td>
-          <td style="text-align: left">Backend Logic (RAG, Compute)</td>
-          <td style="text-align: center">$0.22</td>
+          <td style="text-align: left">Backend Logic Processing (RAG, Compute)</td>
+          <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
           <td style="text-align: center">2</td>
           <td style="text-align: left"><strong>Amazon API Gateway</strong></td>
           <td style="text-align: left">Synchronous Request Gateway</td>
-          <td style="text-align: center">$0.03</td>
+          <td style="text-align: center">$0.025</td>
       </tr>
       <tr>
           <td style="text-align: center">3</td>
-          <td style="text-align: left"><strong>AWS App Runner</strong></td>
-          <td style="text-align: left">Host Frontend (Next.js)</td>
-          <td style="text-align: center">$10.20</td>
+          <td style="text-align: left"><strong>AWS Amplify</strong></td>
+          <td style="text-align: left">Frontend Host (Next.js)</td>
+          <td style="text-align: center">$2.59</td>
       </tr>
       <tr>
           <td style="text-align: center"><strong>II. DATA &amp; STORAGE</strong></td>
@@ -793,21 +553,15 @@
       </tr>
       <tr>
           <td style="text-align: center">4</td>
-          <td style="text-align: left"><strong>RDS for PostgreSQL</strong></td>
-          <td style="text-align: left">Relational Data/Profiles</td>
-          <td style="text-align: center">$37.14</td>
+          <td style="text-align: left"><strong>Amazon DynamoDB</strong></td>
+          <td style="text-align: left">Chat History/Rate Limiting</td>
+          <td style="text-align: center">$0.89</td>
       </tr>
       <tr>
           <td style="text-align: center">5</td>
-          <td style="text-align: left"><strong>Amazon DynamoDB</strong></td>
-          <td style="text-align: left">Chat History/Rate Limiting</td>
-          <td style="text-align: center">$0.29</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">6</td>
           <td style="text-align: left"><strong>Amazon S3</strong></td>
           <td style="text-align: left">RAG Knowledge Base/Assets</td>
-          <td style="text-align: center">$0.88</td>
+          <td style="text-align: center">$0.03</td>
       </tr>
       <tr>
           <td style="text-align: center"><strong>III. AI &amp; SECURITY</strong></td>
@@ -816,22 +570,22 @@
           <td style="text-align: center"></td>
       </tr>
       <tr>
-          <td style="text-align: center">7</td>
+          <td style="text-align: center">6</td>
           <td style="text-align: left"><strong>Amazon Bedrock</strong></td>
           <td style="text-align: left">Embedding &amp; LLM/Content Generation</td>
-          <td style="text-align: center">$2.45</td>
+          <td style="text-align: center">$2.65</td>
       </tr>
       <tr>
-          <td style="text-align: center">8</td>
+          <td style="text-align: center">7</td>
           <td style="text-align: left"><strong>Amazon Cognito</strong></td>
-          <td style="text-align: left">Authentication/User Roles (MAUs)</td>
+          <td style="text-align: left">Authentication/User Roles</td>
           <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
-          <td style="text-align: center">9</td>
-          <td style="text-align: left"><strong>Secrets Manager</strong></td>
-          <td style="text-align: left">Store Master Keys (Fixed Cost)</td>
-          <td style="text-align: center">$2.15</td>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left"><strong>Parameter Store</strong></td>
+          <td style="text-align: left">Store Master Keys</td>
+          <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
           <td style="text-align: center"><strong>IV. ASYNC &amp; MONITORING</strong></td>
@@ -840,86 +594,39 @@
           <td style="text-align: center"></td>
       </tr>
       <tr>
-          <td style="text-align: center">10</td>
+          <td style="text-align: center">9</td>
           <td style="text-align: left"><strong>EventBridge Scheduler</strong></td>
           <td style="text-align: left">Daily Horoscope Trigger</td>
           <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left"><strong>Amazon SES</strong></td>
+          <td style="text-align: left">Email Delivery</td>
+          <td style="text-align: center">$0.48</td>
+      </tr>
+      <tr>
           <td style="text-align: center">11</td>
-          <td style="text-align: left"><strong>Amazon SQS</strong></td>
-          <td style="text-align: left">Notification Queue</td>
-          <td style="text-align: center">$0.08</td>
+          <td style="text-align: left"><strong>Amazon CloudWatch</strong></td>
+          <td style="text-align: left">Logs/Metrics/Alarms</td>
+          <td style="text-align: center">$2.4</td>
       </tr>
       <tr>
           <td style="text-align: center">12</td>
-          <td style="text-align: left"><strong>Amazon SES</strong></td>
-          <td style="text-align: left">Email Delivery</td>
-          <td style="text-align: center">$0.24</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">13</td>
-          <td style="text-align: left"><strong>Amazon CloudWatch</strong></td>
-          <td style="text-align: left">Logs/Metrics/Alarms</td>
-          <td style="text-align: center">$4.46</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">14</td>
           <td style="text-align: left"><strong>Amazon SNS</strong></td>
           <td style="text-align: left">Alert Notifications</td>
           <td style="text-align: center">$0.00</td>
       </tr>
       <tr>
-          <td style="text-align: center"><strong>V. NETWORK &amp; DELIVERY</strong></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">15</td>
-          <td style="text-align: left"><strong>Amazon Route 53</strong></td>
-          <td style="text-align: left">DNS/Domain Management</td>
-          <td style="text-align: center">$0.50</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">16</td>
-          <td style="text-align: left"><strong>Amazon CloudFront</strong></td>
-          <td style="text-align: left">CDN/Content Distribution/Low Latency</td>
-          <td style="text-align: center">$0.24</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">17</td>
-          <td style="text-align: left"><strong>AWS WAF</strong></td>
-          <td style="text-align: left">Web Application Firewall (Layer 7 Protection)</td>
-          <td style="text-align: center">$9.03</td>
-      </tr>
-      <tr>
-          <td style="text-align: center"><strong>VI. DEVOPS &amp; INFRASTRUCTURE</strong></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: center"></td>
-      </tr>
-      <tr>
-          <td style="text-align: center">19</td>
-          <td style="text-align: left"><strong>AWS CodePipeline</strong></td>
-          <td style="text-align: left">CI/CD (Automated Deployment)</td>
-          <td style="text-align: center">$1.00</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">20</td>
-          <td style="text-align: left"><strong>AWS CloudFormation</strong></td>
-          <td style="text-align: left">Infra-as-Code (Resource Management)</td>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left"><strong>Cloudformation</strong></td>
+          <td style="text-align: left">Deploy for dev</td>
           <td style="text-align: center">$0.00</td>
       </tr>
   </tbody>
 </table>
-<p>Link budget estimation:</p>
-<ul>
-<li><a href="https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing">Compute + Monitor Layer + AI</a></li>
-<li><a href="https://drive.google.com/file/d/1ZqoGQjxSpZVKVjAOMy3Ps37iUDCm95k7/view?usp=drive_link">Bedrock</a></li>
-<li><a href="https://drive.google.com/file/d/19rnxIgJZ9kt1rv7DiDIr483EZtEbwJoq/view?usp=sharing">Network + CICD</a></li>
-</ul>
-<h3 id="total-project-cost-6773month">Total Project Cost: $67.73/month</h3>
+<p>Link: <a href="https://drive.google.com/file/d/1Cy0ivN1wIOJ8DthIOE4cYYFG1BzESt5m/view?usp=sharing">Cost Estimation Sheet</a></p>
+<h3 id="total-project-cost-906month">Total Project Cost: $9.06/month</h3>
 <h2 id="7-risk-assessment">7. Risk Assessment</h2>
 <h3 id="risk-matrix">Risk Matrix</h3>
 <table>
@@ -936,25 +643,25 @@
           <td style="text-align: left"><strong>LLM Hallucination</strong></td>
           <td style="text-align: left">High</td>
           <td style="text-align: left">Medium</td>
-          <td style="text-align: left">Implement <strong>RAG Fact Checker</strong>; use high-quality LLMs; ground answers in verified sources.</td>
+          <td style="text-align: left">Implement RAG Fact Checker; use high-quality LLMs; ground answers in verified sources.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Cost Overruns (LLM Calls)</strong></td>
           <td style="text-align: left">High</td>
           <td style="text-align: left">Medium</td>
-          <td style="text-align: left">Set up <strong>AWS Budget Alerts</strong>; implement <strong>token control</strong>; use tiered LLM models (Free vs. VIP).</td>
+          <td style="text-align: left">Set up AWS Budget Alerts; implement token control; use tiered LLM models (Free vs. VIP).</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>RAG Retrieval Latency</strong></td>
           <td style="text-align: left">Medium</td>
           <td style="text-align: left">Medium</td>
-          <td style="text-align: left">Optimize RAG indexing (FAISS); optimize chunk size and embedding model choice.</td>
+          <td style="text-align: left">Optimize RAG indexing; optimize chunk size and embedding model choice.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Security Breaches</strong></td>
           <td style="text-align: left">High</td>
           <td style="text-align: left">Low</td>
-          <td style="text-align: left">Use <strong>Cognito</strong> for authentication and <strong>Secret Manager</strong> for credential handling.</td>
+          <td style="text-align: left">Use Cognito for authentication and Secret Manager for credential handling.</td>
       </tr>
   </tbody>
 </table>
@@ -1042,19 +749,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1762847912"></script>
-    <script src="../js/perfect-scrollbar.min.js?1762847912"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1762847912"></script>
-    <script src="../js/jquery.sticky.js?1762847912"></script>
-    <script src="../js/featherlight.min.js?1762847912"></script>
-    <script src="../js/highlight.pack.js?1762847912"></script>
+    <script src="../js/clipboard.min.js?1765082047"></script>
+    <script src="../js/perfect-scrollbar.min.js?1765082047"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1765082047"></script>
+    <script src="../js/jquery.sticky.js?1765082047"></script>
+    <script src="../js/featherlight.min.js?1765082047"></script>
+    <script src="../js/highlight.pack.js?1765082047"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1762847912"></script>
-    <script src="../js/learn.js?1762847912"></script>
-    <script src="../js/hugo-learn.js?1762847912"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1765082047"></script>
+    <script src="../js/learn.js?1765082047"></script>
+    <script src="../js/hugo-learn.js?1765082047"></script>
 
-    <link href="../mermaid/mermaid.css?1762847912" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1762847912"></script>
+    <link href="../mermaid/mermaid.css?1765082047" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1765082047"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
