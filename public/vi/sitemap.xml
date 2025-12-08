@@ -26,6 +26,18 @@
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.1-prepare/"
                 />
   </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.1-preparation/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/2.2.1-preparation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.1-preparation/"
+                />
+  </url><url>
     <loc>http://localhost:1313/repo-name/vi/1-proposal/</loc>
     <xhtml:link
                 rel="alternate"
@@ -74,18 +86,6 @@
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/"
                 />
   </url><url>
-    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/"
-                />
-  </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/</loc>
     <xhtml:link
                 rel="alternate"
@@ -96,6 +96,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/repo-name/vi/2-workshop/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/"
                 />
   </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.2-set-up/</loc>
@@ -110,6 +122,18 @@
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.2-set-up/"
                 />
   </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.2-ui-implementation/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/2.2.2-ui-implementation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.2-ui-implementation/"
+                />
+  </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.3-configure-serverless/</loc>
     <xhtml:link
                 rel="alternate"
@@ -122,6 +146,18 @@
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.3-configure-serverless/"
                 />
   </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.3-integration/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/2.2.3-integration/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.3-integration/"
+                />
+  </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.4-aws-ssm/</loc>
     <xhtml:link
                 rel="alternate"
@@ -132,6 +168,30 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.4-aws-ssm/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.4-deployment/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/2.2.4-deployment/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.4-deployment/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.5-advanced-deployment/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/2.2.5-advanced-deployment/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.5-advanced-deployment/"
                 />
   </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.5-cicd/</loc>
@@ -156,6 +216,30 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.6-microservice/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.6-backend-architecture/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/2.2.6-backend-architecture/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.6-backend-architecture/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.7-cleanup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.2-frontend-development/2.2.7-cleanup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.7-cleanup/"
                 />
   </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.7-email/</loc>
