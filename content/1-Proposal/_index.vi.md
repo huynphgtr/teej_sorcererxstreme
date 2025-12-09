@@ -4,153 +4,268 @@ weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
+<img src="/images/logo.jpg" class="img-responsive" style="max-width:300px; display:block; margin:auto;">
 
-# SorcererXStreme: Nền tảng Luận giải Ứng dụng AI
+# AWS FIRST CLOUD AI JOURNEY – PROJECT PLAN
+# TEEJ_SorcererXStreme - FPT University - Ho Chi Minh Campus - SORCERERXSTREME
 
-## 1. Tóm tắt  
+---
 
-Nền tảng SorcererXStreme AI là một nền tảng luận giải tâm linh dựa trên AI, được thiết kế để giúp người dùng khám phá bản thân thông qua nhiều lĩnh vực huyền học Đông và Tây khác nhau, bao gồm Chiêm tinh học (Astrology), Tarot, Thần số học (Numerology) và Tử vi Phương Đông (Eastern Horoscopes). Nền tảng của hệ thống là Lõi Tạo sinh Tăng cường Truy xuất (Retrieval-Augmented Generation - RAG Core), đảm bảo tất cả đầu ra đều dựa trên các nguồn tri thức huyền học được chọn lọc.
+## 0. PHỤ LỤC
 
-## 2. Vấn đề đặt ra
+1. [BỐI CẢNH VÀ ĐỘNG LỰC](#1-bối-cảnh-và-động-lực)
+   * 1.1. [Tóm tắt](#11-tóm-tắt)
+   * 1.2. [Tiêu chí thành công của dự án](#12-tiêu-chí-thành-công-của-dự-án)
+   * 1.3. [Giả định và tiền đề](#13-giả-định-và-tiền-đề)
 
-### Vấn đề
+2. [KIẾN TRÚC GIẢI PHÁP](#2-kiến-trúc-giải-pháp)
+   * 2.1. [Sơ đồ kiến trúc kỹ thuật](#21-sơ-đồ-kiến-trúc-kỹ-thuật)
+   * 2.2. [Kế hoạch kỹ thuật](#22-kế-hoạch-kỹ-thuật)
+   * 2.3. [Kế hoạch dự án](#23-kế-hoạch-dự-án)
+   * 2.4. [Các yếu tố bảo mật](#24-các-yếu-tố-bảo-mật)
 
-Người dùng hiện đang phải đối mặt với một số hạn chế khi khám phá kiến thức tâm linh và siêu hình:
+3. [HOẠT ĐỘNG VÀ KẾT QUẢ BÀN GIAO](#3-hoạt-động-và-kết-quả-bàn-giao)
+   * 3.1. [Hoạt động và kết quả bàn giao](#31-hoạt-động-và-kết-quả-bàn-giao)
+   * 3.2. [Nằm ngoài dự án](#32-nằm-ngoài-dự-án)
+   * 3.3. [Quy trình đưa vào vận hành](#33-quy-trình-đưa-vào-vận-hành)
 
-*   **Thông tin rời rạc và chưa được xác minh:** Thông tin rải rác trên internet và thường thiếu độ tin cậy hoặc sự đối chiếu thích hợp.
-*   **Khó khăn trong việc so sánh đa ngành:** Kết quả khó so sánh giữa các trường phái tư tưởng Phương Đông và Phương Tây.
-*   **Thiếu cá nhân hóa và tương tác:** Hầu hết các ứng dụng cung cấp các bài đọc dạng tĩnh, thiếu chiều sâu của đối thoại cá nhân hóa và lời khuyên theo ngữ cảnh.
-*   **Nội dung mơ hồ:** Nhiều ứng dụng mang tính giải trí thiếu chiều sâu, chưa được xác thực.
+4. [PHÂN TÍCH CHI PHÍ THEO DỊCH VỤ](#4-phân-tích-chi-phí-theo-dịch-vụ)
 
-### Giải pháp
+5. [ĐỘI NGŨ](#5-đội-ngũ)
 
-SorcererXStreme AI cung cấp một nền tảng thống nhất, trực quan và thông minh:
+6. [NGUỒN LỰC VÀ ƯỚC TÍNH CHI PHÍ](#6-nguồn-lực-và-ước-tính-chi-phí)
 
-*   **Tương tác trực tiếp:** Người dùng trò chuyện trực tiếp với AI Chatbot, hỏi bất cứ điều gì về tính cách, vận mệnh hoặc các mối quan hệ của họ.
-*   **Luận giải dựa trên mô hình tạo sinh tăng cường truy xuất RAG:** Hệ thống RAG đảm bảo rằng các luận giải dựa trên dữ liệu huyền học đã được xác minh, đảm bảo độ chính xác và chiều sâu.
-*   **Trải nghiệm người dùng phân tầng:** Các tầng Miễn phí và VIP tối ưu hóa trải nghiệm người dùng và tạo ra một luồng doanh thu.
-*   **Thiết kế tối ưu chi phí:** Một thiết kế hiện đại, nhẹ được triển khai nhanh chóng trên kiến trúc serverless AWS tối ưu hóa chi phí.
+7. [NGHIỆM THU](#7-nghiệm-thu)
 
-### Lợi ích và Lợi tức Đầu tư 
+---
 
-| Lợi ích              | Tác động                                                             | Giá trị                                        |
-| :-------------------- | :------------------------------------------------------------------| :--------------------------------------------|
-| **Độ tin cậy dữ liệu** | RAG làm giảm "ảo giác" của mô hình AI và cung cấp các luận giải có thể xác minh nguồn. | Độ tin cậy cao & giữ chân người dùng tốt hơn.  |
-| **Tính trung tâm**     | Hợp nhất dữ liệu huyền học Đông và Tây trong một nền tảng.           | Cơ sở tri thức thống nhất cho người dùng.      |
-| **Khả năng thu lại lợi nhuận** | Mô hình đăng ký VIP mở khóa các tính năng nâng cao. | Dòng doanh thu ổn định và khả năng kinh doanh. |
-| **Chi phí vận hành**   | Kiến trúc serverless AWS được sử dụng.                               | Ước tính $80–$90/tháng cho MVP.                |
+## 1. BỐI CẢNH VÀ ĐỘNG LỰC
 
-## 3. Kiến trúc giải pháp 
+### 1.1 Tóm tắt
+<!-- Dự án **SorcererXStreme AI** được phát triển nhằm giải quyết vấn đề phân mảnh, thiếu kiểm chứng và thiếu tính cá nhân hóa của các thông tin tâm linh trên internet hiện nay. Người dùng hiện gặp khó khăn khi so sánh các trường phái Đông - Tây cũng như tiếp cận các nội dung có chiều sâu.
 
-Nền tảng SorcererXStreme sử dụng kiến trúc hybrid serverless trên AWS, được thiết kế tỉ mỉ để xử lý các tương tác người dùng theo thời gian thực, các tác vụ theo lịch trình và giám sát tự động. Thiết kế toàn diện này đảm bảo tính toán chuyên biệt, khả năng mở rộng cao và bảo mật nghiêm ngặt trên tất cả các luồng chức năng.
+SorcererXStreme là nền tảng luận giải tâm linh hợp nhất, sử dụng công nghệ AI tạo sinh (Generative AI) với lõi **RAG (Retrieval-Augmented Generation)** để cung cấp các luận giải dựa trên dữ liệu đã xác minh từ Chiêm tinh học, Tarot, Thần số học và Tử vi Phương Đông. Giải pháp đảm bảo độ tin cậy cao, giảm thiểu "ảo giác" của AI và cung cấp trải nghiệm trò chuyện trực tiếp, sâu sắc. -->
 
-![Sơ đồ kiến trúc](/images/High_Level_System_Architecture.drawio(2).png)
+#### 1. Bối cảnh khách hàng & Vấn đề 
+
+* **Vấn đề:** Các nguồn thông tin tâm linh hiện nay đang bị phân mảnh, thiếu kiểm chứng và thiếu tính cá nhân hóa. Người dùng gặp khó khăn khi tìm kiếm các luận giải sâu sắc, đáng tin cậy hoặc so sánh các trường phái tri thức Đông - Tây (ví dụ: Tử vi vs. Chiêm tinh).
+* **Động lực:** Nhu cầu cấp thiết của khách hàng hiện tại là xây dựng một nền tảng hợp nhất có khả năng cung cấp các nội dung được kiểm định về mặt tri thức, đồng thời duy trì khả năng mở rộng và tối ưu chi phí vận hành.
 
 
-### Dịch vụ sử dụng
+#### 2. Mục tiêu kinh doanh & Kỹ thuật 
 
-| Lớp | Dịch vụ | Vai trò và Mối quan hệ |
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%;">Loại Mục tiêu</th>      
+      <th style="width: 70%;">Chi tiết</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Kinh doanh</strong></td>
+      <td> - Cung cấp nội dung có độ tin cậy và chiều sâu vượt trội so với các dịch vụ hiện tại. <br> - Tạo doanh thu từ mô hình dịch vụ trả phí.</td>
+    </tr>
+    <tr>
+      <td><strong>Kỹ thuật</strong></td>
+      <td>- Đảm bảo độ tin cậy AI :Áp dụng lõi RAG để giảm thiểu "ảo giác" của AI. <br> - Khả năng mở rộng: Xây dựng kiến trúc AWS Serverless (Lambda, API Gateway) để dễ dàng đáp ứng lưu lượng truy cập lớn và tối ưu chi phí vận hành (Pay-per-use).</td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### 3. Trường hợp sử dụng 
+
+Các chức năng chính mà dự án sẽ hỗ trợ người dùng:
+
+* **AI Chatbot tương tác sâu:** Trò chuyện trực tiếp với AI, có khả năng duy trì ngữ cảnh và kết hợp nhiều trường phái trong một phiên sử dụng duy nhất.
+* **Luận giải cá nhân hóa:** Cung cấp các báo cáo chuyên sâu dựa trên dữ liệu đầu vào (ngày sinh, nơi sinh, giờ sinh).
+* **Thông báo tự động:** Gửi các thông báo định kỳ qua email.
+
+#### 4. Tóm tắt dịch vụ tư vấn
+
+Dịch vụ chuyên nghiệp sẽ được cung cấp để đạt được các mục tiêu trên bao gồm:
+
+* **Thiết kế Kiến trúc Serverless:** Xây dựng kiến trúc đa mô hình và thiết lập luồng RAG trên AWS Bedrock.
+* **Tối ưu hóa Chi phí & Hiệu suất:** Tinh chỉnh các hàm Lambda và thiết lập bảo mật qua SSM Parameter Store.
+* **Tự động hóa CI/CD:** Triển khai toàn bộ quy trình phát triển và triển khai tự động (IaC) bằng Serverless Framework và GitHub Actions.
+
+### 1.2 Tiêu chí thành công của dự án
+Sự thành công của dự án sẽ được đánh giá dựa trên các tiêu chí định lượng và định tính sau:
+* **Độ tin cậy dữ liệu:** Hệ thống RAG hoạt động chính xác, giảm thiểu ảo giác AI, cung cấp nguồn dẫn chứng minh bạch cho các luận giải.
+* **Hợp nhất tri thức:** Thành công trong việc tích hợp dữ liệu huyền học Đông và Tây vào một nền tảng duy nhất.
+* **Hiệu quả kinh doanh:** Triển khai thành công mô hình phân tầng (Free/VIP) để tạo dòng doanh thu ổn định.
+* **Tối ưu chi phí:** Hệ thống vận hành trên kiến trúc Serverless với chi phí ước tính khoảng $9.06/tháng cho môi trường Demo.
+* **Khả năng mở rộng:** Hệ thống tự động mở rộng (Auto-scaling) để xử lý lưu lượng truy cập lớn mà không cần can thiệp thủ công.
+
+### 1.3 Giả định và tiền đề
+Dự án được thực hiện dựa trên các giả định và ràng buộc sau:
+* **Phụ thuộc công nghệ:** Dự án phụ thuộc vào tính sẵn sàng và ổn định của các dịch vụ AWS (Bedrock, Lambda, API Gateway).
+* **Dữ liệu:** Giả định rằng dữ liệu đầu vào cho RAG (sách, tài liệu huyền học) là sạch, có bản quyền hoặc thuộc phạm vi sử dụng hợp lệ.
+* **Rủi ro:** Có rủi ro về "ảo giác" của LLM dù đã dùng RAG, cần có cơ chế Fact Checker.
+* **Ràng buộc chi phí:** Ngân sách vận hành được tối ưu hóa chặt chẽ.
+
+---
+
+## 2. KIẾN TRÚC GIẢI PHÁP
+
+### 2.1 Sơ đồ kiến trúc kỹ thuật
+Kiến trúc đề xuất là **Hybrid Serverless** trên AWS, bao gồm các lớp: Edge & Auth, API & Routing, Compute, Data, AI/ML và Async Monitoring.
+
+![Architecture Diagram](/images/High_Level_System_Architecture.drawio(2).png)
+
+**Các thành phần chính:**
+* **Frontend:** AWS Amplify (Next.js).
+* **Auth:** Amazon Cognito.
+* **Backend:** AWS Lambda, Amazon API Gateway.
+* **Database:** NeonDB (PostgreSQL) làm DB chính, DynamoDB cho lịch sử, Pinecone cho Vector Search.
+* **AI Core:** Amazon Bedrock (LLM & Embeddings), S3 (RAG Docs).
+
+### 2.2 Kế hoạch kỹ thuật
+Đội ngũ dự án sẽ phát triển và triển khai hệ thống theo quy trình kỹ thuật sau:
+* **Scripts & IaC:** Sử dụng **Serverless Framework** để sinh ra CloudFormation template, đảm bảo việc triển khai hạ tầng (IaC) có thể lặp lại và nhất quán.
+* **CI/CD:** Sử dụng **GitHub Actions** để tự động hóa quy trình Build, Test và Deploy các hàm Lambda và API Gateway.
+* **RAG Pipeline:** Thiết lập luồng xử lý dữ liệu: Upload tài liệu lên S3 -> Lambda Trigger -> Tạo Embedding (Bedrock) -> Lưu vào Pinecone Vector DB.
+
+### 2.3 Kế hoạch dự án
+Dự án áp dụng mô hình **Agile-Iterative** trong 9 tuần, chia làm 3 giai đoạn (Iteration) chính:
+* **Iter 3 (Tuần 1-3):** Thiết kế lại hệ thống, hoàn thiện tài liệu SRS/SDS và dựng Prototype cho RAG pipeline.
+* **Iter 4 (Tuần 4-6):** Tích hợp AWS Cognito, phát triển logic phân quyền (Guest/VIP), xây dựng kho dữ liệu (Corpus) trên S3.
+* **Iter 5 (Tuần 7-9):** Triển khai toàn diện lên AWS, kiểm thử End-to-End (QA), tối ưu hóa chi phí và hiệu năng.
+
+### 2.4 Các yếu tố bảo mật
+Bảo mật được thiết kế theo mô hình "Defense in Depth":
+* **Identity & Access:** Sử dụng Amazon Cognito để quản lý định danh và phân quyền người dùng (User Roles).
+* **Data Protection:** Các khóa bí mật (API Keys, DB Credentials) được lưu trữ an toàn trong **AWS Systems Manager Parameter Store**, không lưu cứng trong code.
+* **Network Security:** API Gateway đóng vai trò là cửa ngõ duy nhất.
+* **Monitoring:** Sử dụng CloudWatch để ghi log và giám sát các hành vi bất thường.
+
+---
+
+## 3. HOẠT ĐỘNG VÀ KẾT QUẢ BÀN GIAO
+
+### 3.1 Activities and deliverables
+
+| Giai đoạn triển khai | Timeline | Hoạt động | Milestones | Ngày hoàn thành |
+| :--- | :--- | :--- | :--- | :--- |
+| **Design & Prototype** | Tuần 1-3 | - Thiết kế kiến trúc AWS.<br>- Thu thập dữ liệu RAG.<br>- Viết tài liệu SRS/SDS. | - Sơ đồ kiến trúc & Bảng chi phí.<br>- RAG Pipeline Prototype.<br>- Tài liệu đề án. | 12/10/-01/11/2025 |
+| **Development (Core)** | Tuần 4-6 | - Tích hợp Cognito.<br>- Code Backend (Lambda).<br>- Xây dựng Vector DB. | - Hệ thống Auth hoạt động.<br>- API hoàn chỉnh cho VIP/Free.<br>- RAG Knowledge Base sẵn sàng. | 02/11-22/11/2025 |
+| **Deployment & QA** | Tuần 7-9 | - Cấu hình GitHub Actions.<br>- Deploy lên môi trường Prod.<br>- Load Test & Pen Test. | - Hệ thống Live trên AWS.<br>- Báo cáo kiểm thử.<br>- Tài liệu hướng dẫn sử dụng. | 23/11-09/12/2025 |
+
+### 3.2 Nằm ngoài dự án
+Các hạng mục sau nằm ngoài phạm vi của dự án (MVP) hiện tại:
+* Phát triển ứng dụng di động (Mobile App - iOS/Android).
+* Tính năng Voice Chat thời gian thực (trò chuyện bằng giọng nói).
+
+### 3.3 Quy trình đưa vào vận hành
+Phiên bản hiện tại là MVP (Minimum Viable Product). Để đưa vào sản xuất quy mô lớn, cần thực hiện thêm các bước:
+* **Mở rộng tính năng:** Nâng cấp kiến trúc Lambda và Bedrock để hỗ trợ React Native Mobile App hoặc Voice Chat trong tương lai.
+* **Operational Excellence:** Thiết lập AWS CloudWatch Alarms chi tiết hơn để giám sát lỗi và độ trễ.
+* **Tối ưu RAG:** Tinh chỉnh kích thước chunk và chiến lược truy xuất để giảm độ trễ phản hồi.
+
+---
+
+## 4. PHÂN TÍCH CHI PHÍ THEO DỊCH VỤ
+
+Chi phí ước tính cho môi trường Demo (~5.000 requests/tháng) là **$9.06/tháng**.
+
+Link chi tiết: [Bảng ước tính chi phí](https://drive.google.com/file/d/1Cy0ivN1wIOJ8DthIOE4cYYFG1BzESt5m/view?usp=sharing)
+
+| Layer | AWS Service | Purpose | Cost/Month |
+| :--- | :--- | :--- | :--- |
+| **Compute & API** | AWS Lambda, API Gateway, Amplify | Backend Logic & Hosting | ~$2.62 |
+| **Data & Storage** | DynamoDB, S3 | Chat History & RAG Storage | ~$0.92 |
+| **AI & Security** | Bedrock, Cognito, Parameter Store | LLM Generation & Auth | ~$2.65 |
+| **Async & Monitoring** | SES, CloudWatch, EventBridge | Email & Logging | ~$2.88 |
+| **Tổng** | | | **$9.06** |
+
+---
+
+## 5. ĐỘI NGŨ
+
+### Chịu trách nhiệm tổng thể
+
+| Tên | Chức danh | Mô tả | Email |
+| :--- | :--- | :--- | :--- |
+| *Nguyễn Gia Hưng* | *Head of Architecture Solution* | *Thiết kế và phát triển các nền tảng đám mây gốc và phi máy chủ* | *hunggia@amazon.com* |
+
+### Các bên liên quan
+
+| Tên | Chức danh | Mô tả | Email |
+| :--- | :--- | :--- | :--- |
+| *Đình Quang Sáng* | PQHDN | Đánh giá & Định hướng | *SangDQ6@fe.edu.vn* |
+
+### Đại diện hỗ trợ
+
+| Tên | Chức danh | Mô tả | Email |
+| :--- | :--- | :--- | :--- |
+| *Văn Hoàng Kha*| Cloud Security Engineer, Co-founded and led Viet-AWS | Thực thi các hướng kỹ thuật về Bảo mật đám mây và DevSecOps | *khavan.work@gmail.com* |
+
+
+### Đội ngũ thực hiện dự án
+
+| Tên | Chức danh | Mô tả | Email |
+| :--- | :--- | :--- | :--- |
+| *Trần Phương Huyền* | Leader + Backend Dev | Quản lý dự án + Phát triển Backend | *tranphuonghuyen2005@gmail.com* |
+| *Nguyễn Lâm Anh* | AI Dev | Phát triển AI | *nguyenla110505@gmail.com* |
+| *Nguyễn Văn Linh* | AI Dev | Phát triển AI | *nguyenvanlinh.1710.it@gmail.com* |
+| *Bùi Nguyễn Tấn Khang* | Frontend Dev | Phát triển Frontend | *tankhang6a6@gmail.com* |
+
+
+---
+
+## 6. NGUỒN LỰC VÀ ƯỚC TÍNH CHI PHÍ
+
+### Định mức đơn giá nhân sự
+*(Đơn giá nhân sự ước tính dựa trên định mức dự án sinh viên/học thuật)*
+
+| Nguồn lực / Vai trò | Trách nhiệm | Đơn giá (USD) / Giờ |
 | :--- | :--- | :--- |
-| **Edge & Auth** | Amplify, Cognito | - Amplify đảm nhận Hosting Frontend và Định tuyến.<br>- Cognito quản lý xác thực. |
-| **API & Routing** | API Gateway | - Endpoint chính cho tất cả các Lambda Backend và Lambda AI. |
-| **Compute Layer** | AWS Lambda | - Xử lý logic nghiệp vụ và các luồng Async/Sync. |
-| **Data & Integration** | DynamoDB, Parameter Store, NeonDB, Pinecone | - NeonDB(PostgreSQL bên ngoài) là DB chính. <br> - DynamoDB cho lịch sử/truy cập nhanh. <br> - Parameter Store lưu trữ bảo mật. |
-| **AI/ML** | Bedrock, Lambda (Embeddings), S3 |- Bedrock (LLM Model). <br> - S3 lưu trữ tài liệu thô RAG. <br> - Lambda Embeddings tạo vector. |
-| **Async & Monitoring** | EventBridge, SQS, SES, CloudWatch, SNS | - Các luồng Async và Giám sát hoạt động độc lập. |
-| **DevOps** | GitHub Actions, CloudFormation | - GitHub Actions đảm nhận quá trình Build, Test, và CloudFormation do Serverless Framework tạo ra là công cụ deploy chính. |
+| **Solution Architects** | - Thiết kế kiến trúc tổng thể (Hybrid Serverless, RAG Flow).<br>- Lựa chọn dịch vụ AWS tối ưu (Bedrock, Lambda, Pinecone).<br>- Đảm bảo các yêu cầu phi chức năng (bảo mật, độ trễ, chi phí). | **2.3** |
+| **Software Engineers** | - Phát triển Frontend (Next.js/Amplify) và tích hợp Cognito.<br>- Xây dựng Backend API (Lambda) để xử lý logic người dùng.<br>- Quản lý lưu trữ dữ liệu Chat History (DynamoDB). | **0.7** |
+| **AI Engineers** | - Tinh chỉnh Prompt cho Bedrock để luận giải Tarot/Tử vi.<br>- Xây dựng luồng RAG: Chunking tài liệu, Embeddings, Vector Search.<br>- Đánh giá độ chính xác và giảm thiểu ảo giác (Hallucination) của AI. | **0.7** |
 
+### Ước tính giờ công & chi phí theo giai đoạn
+*(Ước tính nỗ lực cho 3 Iterations - 9 tuần)*
 
-### Luồng Hoạt động
+| Giai đoạn Dự án | Vai trò | Giờ công | Chi phí (USD) | Tổng Chi phí Giai đoạn |
+| :--- | :--- | :--- | :--- | :--- |
+| **Iter 3: Design & Prototype**<br>*(Tuần 1-3)* | **Solution Architect**<br>Software Engineer<br>AI Engineer | 30<br>30<br>30 | $69.0<br>$21.0<br>$21.0 | **$111.0** |
+| **Iter 4: Core Development**<br>*(Tuần 4-6)* | Solution Architect<br>**Software Engineer**<br>**AI Engineer** | 20<br>80<br>80 | $46.0<br>$56.0<br>$56.0 | **$158.0** |
+| **Iter 5: Deploy & QA**<br>*(Tuần 7-9)* | Solution Architect<br>Software Engineer<br>AI Engineer | 10<br>60<br>40 | $23.0<br>$42.0<br>$28.0 | **$93.0** |
+| **TỔNG CỘNG** | | **380** | | **$362.0** |
 
-#### 1. Luồng Tương tác API Thời gian thực (Synchronous Flow)
+### Phân bổ đóng góp chi phí
+*(Phân bổ trách nhiệm chi phí giữa các bên liên quan)*
 
-Luồng này xử lý các yêu cầu chat và luận giải trực tiếp từ người dùng.
+| Bên tham gia | Giá trị Đóng góp (USD) | Tỷ lệ Đóng góp trên Tổng số |
+| :--- | :--- | :--- |
+| **Partner (Team)** | **$362.0** | **97.5%** (Chi phí nhân sự tự đóng góp) |
+| **AWS** | **~$9.06/tháng** | **2.5%** (Chi phí hạ tầng Cloud ước tính) |
+| **Customer** | **$0** | **0%** (Dự án học thuật/MVP) |
 
-* **(1) Tiếp nhận Yêu cầu:** User gửi yêu cầu trực tiếp đến AWS Amplify Endpoint.
-* **(2) Định tuyến & API:** Amplify chuyển tiếp yêu cầu đến API Gateway. API Gateway xác thực token Cognito và chuyển đến Lambda tương ứng (`SyncUser`, `Chatbot`, v.v.).
-* **(3) Xử lý Dữ liệu:** Lambda truy cập Parameter Store để lấy các khóa bí mật và truy cập dữ liệu tại NeonDB, DynamoDB.
-* **(4) RAG và AI:** Lambda Chatbot thực hiện luồng RAG:
-    * Sử dụng Bedrock (Embedding Model) để tạo vector cho câu hỏi.
-    * Truy vấn Pinecone (Vector Database) bằng vector đó.
-    * Gửi ngữ cảnh RAG (Context) đến Bedrock (LLM) để tạo sinh câu trả lời.
-* **(5) Phản hồi:** Lambda trả kết quả về API Gateway -> Amplify -> User.
+---
 
-#### 2. Luồng Thông báo Tự động (Asynchronous Flow)
+## 7. NGHIỆM THU
 
-Luồng này được đơn giản hóa mà không cần RDS.
+Việc nghiệm thu dự án **SorcererXStreme** sẽ không chỉ dựa trên việc hoàn thành tính năng, mà còn căn cứ vào độ ổn định của hệ thống và chất lượng đầu ra của AI.
 
-* **(1) Kích hoạt:** EventBridge Scheduler kích hoạt Lambda TriggerReminder.
-* **(2) Truy vấn Data:** Lambda truy vấn DynamoDB hoặc NeonDB để lấy danh sách người dùng đã đăng ký.
-* **(3) Phân phối:** Lambda tạo nội dung và gửi email thông qua Amazon SES.
+### 7.1. Gói bàn giao 
+Sản phẩm được coi là sẵn sàng để nghiệm thu khi đội dự án cung cấp đầy đủ các hạng mục sau:
+* **Mã nguồn (Source Code):** Repository chứa toàn bộ code Backend (Lambda), Frontend (Next.js), và Infrastructure as Code (Serverless Framework).
+* **Tài liệu kỹ thuật (Documentation):** Bao gồm SRS, SDS, API Documentation và hướng dẫn triển khai (Deployment Guide).
+* **Môi trường vận hành (Live Environment):** Đường dẫn (URL) truy cập vào môi trường Demo đã hoạt động ổn định trên AWS.
+* **Báo cáo chất lượng (Quality Report):** Kết quả kiểm thử (Test Cases) và báo cáo đánh giá độ chính xác của mô hình RAG.
 
-#### 3. Luồng triển khai (DevOps)
+### 7.2. Quy trình nghiệm thu 
+Quy trình sẽ diễn ra theo trình tự 4 bước:
+1.  **Trình diễn (Live Demo):** Đội dự án demo trực tiếp các luồng người dùng (User Flow) chính: Đăng ký -> Chọn dịch vụ -> Chat với AI -> Nhận kết quả.
+2.  **Kiểm thử chấp nhận (UAT):** Khách hàng/Mentor trực tiếp sử dụng hệ thống (03-05 ngày) để kiểm tra độ chính xác của kiến thức tâm linh và khả năng chịu tải.
+3.  **Phản hồi & Khắc phục:** Đội dự án cam kết sửa lỗi nghiêm trọng (Critical) trong 24-48 giờ. Các lỗi nhỏ sẽ được cập nhật trong bản vá sau.
+4.  **Xác nhận hoàn thành:** Dự án được nghiệm thu khi không còn lỗi nghiêm trọng và các tính năng cốt lõi hoạt động đúng cam kết.
 
-* **(1) Code Commit:** Developer đẩy code lên GitHub.
-* **(2) Build & Deploy:** GitHub Actions kích hoạt quá trình Build, Test và sử dụng CloudFormation sinh ra từ Serverless Framework để triển khai các hàm Lambda, API Gateway và các tài nguyên khác lên AWS.
-
-
-## 5. Mốc thời gian & Các cột mốc 
-
-Dự án SorcererXStreme sẽ được thực hiện trong khoảng thời gian phát triển tập trung 9 tuần theo mô hình Agile-Iterative để nhanh chóng cung cấp một MVP với các tính năng chính.
-
-### Mốc thời gian Dự án
-
-| Iter  | Thời gian | Tuần | Trọng tâm chính | Các sản phẩm bàn giao chính |
-| :-------------------------------------- | :-------| :-----------| :------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Iter 3: Thiết kế lại & Nguyên mẫu RAG** | 3 Tuần | 1 – 2 – 3 | Thiết kế Nền tảng & Tài liệu|- SRS v2 và SDS v2, Đề án được hoàn thiện.<br> - Sơ đồ kiến trúc AWS và bảng ước tính chi phí. <br> - Dữ liệu RAG được thu thập và pipeline ban đầu được thiết kế.             |
-| **Iter 4: Vai trò & Hệ thống VIP**        | 3 Tuần    | 4 – 5 – 6     | Triển khai Logic Cốt lõi & Ủy quyền | - AWS Cognito được tích hợp để xác thực người dùng. <br> - Logic vai trò Guest/Miễn phí/VIP đầy đủ được triển khai và có thể kiểm thử. <br> - Corpus dữ liệu RAG được xây dựng trên S3.       |
-| **Iter 5: Triển khai AWS & QA** | 3 Tuần    | 7 – 8 – 9     | Triển khai Đám mây & Ổn định | - Hệ thống chạy ổn định trên AWS. <br> - Hoàn thành kiểm thử đầu cuối đầy đủ. AWS Cost and Performance Sheet được hoàn thiện. <br> - Sẵn sàng cho môi trường thực thi. |
-
-## 6. Ước tính ngân sách 
-Dự án được chúng tôi giả định mức sử dụng thấp cho môi trường Demo (khoảng 5.000 yêu cầu/tháng).
-
-### Chi phí Cơ sở Hạ tầng
-
-| Layer |  Dịch vụ AWS | Mục tiêu | Chi phí |
-| :---: | :--- | :--- | :---: |
-| **I. COMPUTE & API** | | | |
-| 1 | **AWS Lambda** | Xử lí Backend Logic (RAG, Compute) | $0.00 |
-| 2 | **Amazon API Gateway** | Synchronous Request Gateway | $0.025 |
-| 3 | **AWS Amplify** | Host Frontend (Next.js) | $2.59 |
-| **II. DATA & STORAGE** | | | |
-| 4 | **Amazon DynamoDB** | Chat History/Rate Limiting | $0.89 |
-| 5 | **Amazon S3** | RAG Knowledge Base/Assets | $0.03 |
-| **III. AI & SECURITY** | | | |
-| 6 | **Amazon Bedrock** | Embedding & LLM/Content Generation | $2.65 |
-| 7 | **Amazon Cognito** | Authentication/User Roles | $0.00 |
-| 8 | **Parameter Store** | Store Master Keys | $0.00 |
-| **IV. ASYNC & MONITORING** | | | |
-| 9 | **EventBridge Scheduler** | Daily Horoscope Trigger | $0.00 |
-| 10 | **Amazon SES** | Email Delivery | $0.48 |
-| 11 | **Amazon CloudWatch** | Logs/Metrics/Alarms | $2.4 |
-| 12 | **Amazon SNS** | Alert Notifications | $0.00 |
-| 13 | **Cloudformation** | Deploy for dev | $0.00 |
-
-Link: [Bảng uớc tính chi phí](https://drive.google.com/file/d/1Cy0ivN1wIOJ8DthIOE4cYYFG1BzESt5m/view?usp=sharing)
-
-### Tổng Chi Phí Dự Án: $9.06/month
-
-
-## 7. Đánh giá rủi ro 
-
-| Rủi ro | Tác động   | Xác suất | Chiến lược giảm thiểu |
-| :---------------------------------| :-------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------|
-| **Ảo giác LLM** | Cao | Trung bình | Triển khai Bộ kiểm tra Thực tế RAG (RAG Fact Checker); sử dụng LLM chất lượng cao; căn cứ câu trả lời vào các nguồn đã được xác minh.      |
-| **Vượt chi phí LLM** | Cao | Trung bình | Thiết lập Cảnh báo Ngân sách AWS (AWS Budget Alerts); triển khai kiểm soát token; sử dụng mô hình LLM phân tầng (Miễn phí so với VIP). |
-| **Độ trễ Truy xuất RAG**            | Trung bình | Trung bình | Tối ưu hóa việc lập chỉ mục RAG (FAISS); tối ưu hóa kích thước chunk và lựa chọn mô hình embedding.                                            |
-| **Vi phạm Bảo mật**                 | Cao        | Thấp       | Sử dụng Cognito để xác thực và Secret Manager để xử lý thông tin xác thực.                                                             |
-
-## 8. Kết quả mong đợi
-
-### Cải tiến kỹ thuật
-
-*   **Độ chính xác theo thời gian thực:** Tích hợp RAG giảm đáng kể "ảo giác" của AI, nâng cao độ tin cậy của các luận giải.
-*   **Khả năng mở rộng:** Kiến trúc serverless AWS đảm bảo khả năng mở rộng tự động để xử lý lưu lượng truy cập đáng kể của người dùng.
-
-### Giá trị dài hạn
-
-*   **Khả năng lợi nhuận:** Mô hình đăng ký VIP tạo ra một con đường rõ ràng, ổn định để tạo doanh thu.
-*   **Nền tảng dữ liệu:** Một cơ sở tri thức huyền học độc quyền, đã được xác minh và được thiết lập như một tài sản có giá trị, có thể tái sử dụng.
-*   **Mở rộng tương lai:** Kiến trúc AWS linh hoạt dễ dàng nâng cấp cho các ứng dụng di động hoặc tính năng trò chuyện bằng giọng nói.
-
-
+### 7.3. Điều kiện từ chối 
+Sản phẩm sẽ chưa được nghiệm thu nếu:
+* **Lỗi triển khai:** Hệ thống Downtime hoặc API lỗi > 10%.
+* **Sai lệch nội dung:** AI đưa ra thông tin sai lệch nghiêm trọng hoặc vi phạm quy tắc an toàn.
+* **Vượt ngân sách:** Chi phí vận hành thực tế vượt quá ngưỡng cho phép mà không có giải trình hợp lý.

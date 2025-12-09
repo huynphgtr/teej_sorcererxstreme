@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI Models &amp; RAG Pipeline on Báo cáo đề án thực tập</title>
+    <link>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.4-models-rag/</link>
+    <description>Recent content in AI Models &amp; RAG Pipeline on Báo cáo đề án thực tập</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.4-models-rag/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

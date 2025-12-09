@@ -62,28 +62,16 @@
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.1-workshop-overview/"
                 />
   </url><url>
-    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/</loc>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.1-architecture/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/2.4.1-architecture/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/repo-name/2-workshop/2.3-backend-development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.1-architecture/"
                 />
   </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/</loc>
@@ -96,6 +84,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/repo-name/vi/2-workshop/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.2-data-strategy/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/2.4.2-data-strategy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.2-data-strategy/"
                 />
   </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/</loc>
@@ -146,6 +146,30 @@
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.3-configure-serverless/"
                 />
   </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.3-storage-retrieval/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/2.4.3-storage-retrieval/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.3-storage-retrieval/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.3-backend-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/"
+                />
+  </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.3-integration/</loc>
     <xhtml:link
                 rel="alternate"
@@ -156,6 +180,30 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.3-integration/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.4-models-rag/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/2.4.4-models-rag/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.4-models-rag/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/"
                 />
   </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.4-aws-ssm/</loc>
@@ -182,6 +230,18 @@
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.4-deployment/"
                 />
   </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.5-cicd/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/2.4.5-cicd/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.5-cicd/"
+                />
+  </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.2-frontend-development/2.2.5-advanced-deployment/</loc>
     <xhtml:link
                 rel="alternate"
@@ -204,6 +264,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.5-cicd/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.6-roadmap/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/repo-name/2-workshop/2.4-ai-development/2.4.6-roadmap/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/repo-name/vi/2-workshop/2.4-ai-development/2.4.6-roadmap/"
                 />
   </url><url>
     <loc>http://localhost:1313/repo-name/vi/2-workshop/2.3-backend-development/2.3.6-microservice/</loc>

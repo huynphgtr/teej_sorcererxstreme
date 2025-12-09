@@ -24,9 +24,9 @@ Dự án này đóng vai trò là một nghiên cứu điển hình thiết yế
 4.  **Tính bền vững của Dữ liệu và Vector:** Chúng tôi quản lý dữ liệu quan hệ phức tạp bên ngoài bằng cách sử dụng NeonDB  đồng thời sử dụng Cơ sở dữ liệu Vector chuyên dụng (Pinecone) cho lớp truy xuất RAG tốc độ cao.
 5.  **Bảo mật và DevOps:** AWS Parameter Store quản lý tất cả các khóa nhạy cảm và toàn bộ cơ sở hạ tầng được triển khai bằng Serverless Framework được điều khiển bởi GitHub Actions (CI/CD).
 
-#### Nội dung
+### Bài học
 
-1. [Tổng quan workshop](2.1-Workshop-overview)
-2. [Phần phát trFrontend](2.2-Frontend-Development/)
-3. [Backend Development](2.3-Backend-Development/)
-4. [AI Development](2.4-AI-Development/)
+Người tham dự sẽ học cách triển khai kiến trúc Microservices hoàn toàn Serverless, giải quyết các thách thức như kết nối cơ sở dữ liệu bên ngoài, phân tách khối lượng công việc đồng bộ/bất đồng bộ và xây dựng giải pháp RAG Core tiết kiệm chi phí.
+
+![overview](/images/High_Level_System_Architecture.png)
+
